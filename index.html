@@ -139,11 +139,11 @@
                             Estudiante universitaria enfocada en <strong>modelado 3D, texturizado base Shaders en Blender</strong> y desarrollo de videojuegos en Unity.
                         </p>
                         <div class="flex flex-wrap gap-4 pt-2">
-                            <a href="#proyectos" onclick="navigateTo(event, '#proyectos')" class="px-6 py-3.5 rounded-xl bg-peony hover:bg-peony-dark text-white font-semibold transition shadow-lg shadow-peony/25 flex items-center space-x-2.5">
+                            <a href="#proyectos" onclick="navigateTo(event, '#proyectos')" class="px-6 py-3.5 rounded-xl bg-peony hover:bg-peony-dark text-white font-semibold transition-all duration-150 shadow-lg shadow-peony/25 flex items-center space-x-2.5 active:scale-95 active:shadow-md">
                                 <span>Ver Proyectos</span>
                                 <i class="fas fa-arrow-right text-sm"></i>
                             </a>
-                            <a href="#sobre-mi" onclick="navigateTo(event, '#sobre-mi')" class="px-6 py-3.5 rounded-xl border border-cotton bg-white/70 hover:bg-cotton/30 text-brandDark font-semibold transition flex items-center space-x-2.5">
+                            <a href="#sobre-mi" onclick="navigateTo(event, '#sobre-mi')" class="px-6 py-3.5 rounded-xl border border-cotton bg-white/70 hover:bg-cotton/30 text-brandDark font-semibold transition-all duration-150 flex items-center space-x-2.5 active:scale-95">
                                 <span>Sobre Mí</span>
                                 <i class="fas fa-user text-sm text-teal"></i>
                             </a>
@@ -672,6 +672,36 @@
             if (e.target === lightboxModal) closeLightbox();
         });
 
+        // Animación de scroll propia, con curva de aceleración/desaceleración y
+        // duración fija, para que la transición se sienta igual en cualquier navegador.
+        function easeInOutCubic(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        function smoothScrollTo(targetY, duration = 700) {
+            const startY = window.scrollY;
+            const distance = targetY - startY;
+            const startTime = performance.now();
+
+            function step(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
+        function scrollToSection(targetId) {
+            const targetEl = document.getElementById(targetId);
+            if (!targetEl) return;
+            const headerOffset = 80; // debe coincidir con la clase scroll-mt-20 (5rem) de las secciones
+            const targetY = targetEl.getBoundingClientRect().top + window.scrollY - headerOffset;
+            smoothScrollTo(Math.max(targetY, 0));
+        }
+
         function handleRouting() {
             const hash = window.location.hash || '#';
             const homeView = document.getElementById('home-view');
@@ -690,7 +720,7 @@
                 backNav.classList.remove('hidden');
                 
                 renderProjectDetail(projectId);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                smoothScrollTo(0);
             } else {
                 detailView.classList.add('hidden');
                 homeView.classList.remove('hidden');
@@ -705,10 +735,7 @@
                 // y el navegador necesita al menos un frame para calcular su posición real.
                 const targetId = hash === '#' ? 'inicio' : hash.replace('#', '');
                 requestAnimationFrame(() => {
-                    const targetEl = document.getElementById(targetId);
-                    if (targetEl) {
-                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
+                    scrollToSection(targetId);
                 });
             }
         }
