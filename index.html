@@ -39,6 +39,7 @@
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -67,16 +68,19 @@
                             light: '#8baea0',
                             dark: '#4f7264'
                         },
-                        brandDark: '#2C3A35'
+                        brandDark: '#2C3A35',
+                        darkBg: '#121816',
+                        darkCard: '#1A2320',
+                        darkBorder: '#2A3732'
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-[#FBF8F5] text-brandDark font-body selection:bg-peony selection:text-white min-h-screen antialiased transition-colors duration-300">
+<body class="bg-[#FBF8F5] dark:bg-darkBg text-brandDark dark:text-emerald-50 font-body selection:bg-peony selection:text-white min-h-screen antialiased transition-colors duration-300">
 
-    <header class="fixed top-0 left-0 right-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-cotton/60 shadow-sm shadow-teal/5 transition-all duration-300">
+    <header class="fixed top-0 left-0 right-0 w-full z-50 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md border-b border-cotton/60 dark:border-teal/20 shadow-sm shadow-teal/5 transition-all duration-300">
         <div class="w-full px-4 sm:px-6 lg:px-12 py-3.5">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
@@ -85,32 +89,45 @@
                 </a>
 
                 <!-- Enlaces de Navegación Principal (Escritorio) -->
-                <div id="main-nav-links" class="hidden md:flex items-center space-x-7">
-                    <a href="#inicio" onclick="navigateTo(event, '#inicio')" class="text-sm font-semibold text-brandDark/80 hover:text-peony transition-all duration-150 active:scale-90 inline-block">Inicio</a>
-                    <a href="#sobre-mi" onclick="navigateTo(event, '#sobre-mi')" class="text-sm font-semibold text-brandDark/80 hover:text-peony transition-all duration-150 active:scale-90 inline-block">Sobre Mí</a>
-                    <a href="#proyectos" onclick="navigateTo(event, '#proyectos')" class="text-sm font-semibold text-brandDark/80 hover:text-peony transition-all duration-150 active:scale-90 inline-block">Proyectos</a>
+                <div class="hidden md:flex items-center space-x-7">
+                    <div id="main-nav-links" class="flex items-center space-x-7">
+                        <a href="#inicio" onclick="navigateTo(event, '#inicio')" class="text-sm font-semibold text-brandDark/80 dark:text-emerald-100/80 hover:text-peony dark:hover:text-peony transition-all duration-150 active:scale-90 inline-block">Inicio</a>
+                        <a href="#sobre-mi" onclick="navigateTo(event, '#sobre-mi')" class="text-sm font-semibold text-brandDark/80 dark:text-emerald-100/80 hover:text-peony dark:hover:text-peony transition-all duration-150 active:scale-90 inline-block">Sobre Mí</a>
+                        <a href="#proyectos" onclick="navigateTo(event, '#proyectos')" class="text-sm font-semibold text-brandDark/80 dark:text-emerald-100/80 hover:text-peony dark:hover:text-peony transition-all duration-150 active:scale-90 inline-block">Proyectos</a>
+                    </div>
+
+                    <!-- Botón Volver para cuando estás en una página de proyecto -->
+                    <div id="back-nav-link" class="hidden">
+                        <a href="#" onclick="navigateTo(event, '#proyectos')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-cotton/40 dark:bg-teal/20 text-brandDark dark:text-emerald-100 hover:bg-cotton/70 dark:hover:bg-teal/30 transition border border-cotton/80 dark:border-teal/30">
+                            <i class="fas fa-arrow-left"></i> Volver a Proyectos
+                        </a>
+                    </div>
+
+                    <!-- Botón de Alternar Modo Oscuro (Escritorio) -->
+                    <button id="theme-toggle-btn" onclick="toggleDarkMode()" type="button" aria-label="Cambiar tema" class="p-2.5 rounded-xl bg-cotton/20 dark:bg-darkCard text-brandDark dark:text-amber-300 hover:bg-cotton/50 dark:hover:bg-teal/20 transition-all border border-cotton/60 dark:border-teal/30 active:scale-95 flex items-center justify-center">
+                        <i id="theme-toggle-icon" class="fas fa-moon text-base"></i>
+                    </button>
                 </div>
 
-                <!-- Botón Volver para cuando estás en una página de proyecto -->
-                <div id="back-nav-link" class="hidden">
-                    <a href="#" onclick="navigateTo(event, '#proyectos')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-cotton/40 text-brandDark hover:bg-cotton/70 transition border border-cotton/80">
-                        <i class="fas fa-arrow-left"></i> Volver a Proyectos
-                    </a>
-                </div>
-
-                <!-- Botón Menú Móvil -->
-                <div class="flex items-center md:hidden">
-                    <button id="mobile-menu-btn" type="button" aria-label="Menú móvil" class="p-2.5 rounded-xl text-brandDark hover:bg-cotton/30 transition border border-cotton/50">
+                <!-- Botones Menú Móvil & Tema -->
+                <div class="flex items-center space-x-2 md:hidden">
+                    <button onclick="toggleDarkMode()" type="button" aria-label="Cambiar tema" class="p-2.5 rounded-xl bg-cotton/20 dark:bg-darkCard text-brandDark dark:text-amber-300 hover:bg-cotton/40 transition border border-cotton/50 dark:border-teal/30">
+                        <i id="theme-toggle-icon-mobile" class="fas fa-moon text-base"></i>
+                    </button>
+                    <button id="mobile-menu-btn" type="button" aria-label="Menú móvil" class="p-2.5 rounded-xl text-brandDark dark:text-emerald-100 hover:bg-cotton/30 dark:hover:bg-darkCard transition border border-cotton/50 dark:border-teal/30">
                         <i class="fas fa-bars text-lg"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Desplegable Móvil -->
-            <div id="mobile-menu" class="hidden md:hidden pt-3 mt-2 border-t border-cotton/40 space-y-2">
-                <a href="#inicio" onclick="navigateTo(event, '#inicio'); closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-brandDark hover:bg-cotton/30 transition-all duration-150 active:scale-95">Inicio</a>
-                <a href="#sobre-mi" onclick="navigateTo(event, '#sobre-mi'); closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-brandDark hover:bg-cotton/30 transition-all duration-150 active:scale-95">Sobre Mí</a>
-                <a href="#proyectos" onclick="navigateTo(event, '#proyectos'); closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-brandDark hover:bg-cotton/30 transition-all duration-150 active:scale-95">Proyectos</a>
+            <div id="mobile-menu" class="hidden md:hidden pt-3 mt-2 border-t border-cotton/40 dark:border-teal/20 space-y-2">
+                <a href="#inicio" onclick="navigateTo(event, '#inicio'); closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-brandDark dark:text-emerald-100 hover:bg-cotton/30 dark:hover:bg-darkCard transition-all duration-150">Inicio</a>
+                <a href="#sobre-mi" onclick="navigateTo(event, '#sobre-mi'); closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-brandDark dark:text-emerald-100 hover:bg-cotton/30 dark:hover:bg-darkCard transition-all duration-150">Sobre Mí</a>
+                <a href="#proyectos" onclick="navigateTo(event, '#proyectos'); closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-brandDark dark:text-emerald-100 hover:bg-cotton/30 dark:hover:bg-darkCard transition-all duration-150">Proyectos</a>
+                <button onclick="toggleDarkMode(); closeMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-brandDark dark:text-emerald-100 hover:bg-cotton/30 dark:hover:bg-darkCard transition-all duration-150 flex items-center justify-between">
+                    <span>Modo de Color</span>
+                    <span id="theme-toggle-label-mobile" class="text-xs px-2 py-0.5 rounded bg-cotton/40 dark:bg-teal/30 text-brandDark dark:text-emerald-200">Cambiar</span>
+                </button>
             </div>
         </div>
     </header>
@@ -122,20 +139,20 @@
         
         <section id="inicio" class="min-h-screen flex items-center pt-28 pb-12 lg:py-24 relative overflow-hidden scroll-mt-20">
             <!-- Fondo de formas difuminadas de la paleta -->
-            <div class="absolute top-20 left-10 w-72 h-72 bg-cotton/40 rounded-full filter blur-3xl -z-10"></div>
-            <div class="absolute bottom-10 right-10 w-80 h-80 bg-sage/30 rounded-full filter blur-3xl -z-10"></div>
+            <div class="absolute top-20 left-10 w-72 h-72 bg-cotton/40 dark:bg-peony/10 rounded-full filter blur-3xl -z-10 transition-colors duration-500"></div>
+            <div class="absolute bottom-10 right-10 w-80 h-80 bg-sage/30 dark:bg-teal/10 rounded-full filter blur-3xl -z-10 transition-colors duration-500"></div>
 
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <!-- Presentación -->
                     <div class="space-y-6">
-                        <span class="inline-flex items-center gap-2 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-teal-dark bg-sage/30 rounded-full border border-sage/60">
-                            <i class="fas fa-vr-cardboard text-teal"></i> Estilo artistico 3D cartoon
+                        <span class="inline-flex items-center gap-2 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-teal-dark dark:text-teal-light bg-sage/30 dark:bg-teal/20 rounded-full border border-sage/60 dark:border-teal/40">
+                            <i class="fas fa-vr-cardboard text-teal dark:text-teal-light"></i> Estilo artístico 3D cartoon
                         </span>
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-december tracking-wide leading-tight text-brandDark">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-december tracking-wide leading-tight text-brandDark dark:text-white">
                             <span class="bg-gradient-to-r from-peony via-carnation to-teal bg-clip-text text-transparent">Francisca Correa</span>
                         </h1>
-                        <p class="text-base sm:text-lg text-brandDark/80 leading-relaxed">
+                        <p class="text-base sm:text-lg text-brandDark/80 dark:text-emerald-100/80 leading-relaxed">
                             Estudiante universitaria enfocada en <strong>modelado 3D, texturizado base Shaders en Blender</strong> y desarrollo de videojuegos en Unity.
                         </p>
                         <div class="flex flex-wrap gap-4 pt-2">
@@ -143,104 +160,102 @@
                                 <span>Ver Proyectos</span>
                                 <i class="fas fa-arrow-right text-sm"></i>
                             </a>
-                            <a href="#sobre-mi" onclick="navigateTo(event, '#sobre-mi')" class="px-6 py-3.5 rounded-xl border border-cotton bg-white/70 hover:bg-cotton/30 text-brandDark font-semibold transition-all duration-150 flex items-center space-x-2.5 active:scale-95">
+                            <a href="#sobre-mi" onclick="navigateTo(event, '#sobre-mi')" class="px-6 py-3.5 rounded-xl border border-cotton dark:border-teal/30 bg-white/70 dark:bg-darkCard/80 hover:bg-cotton/30 dark:hover:bg-darkCard text-brandDark dark:text-emerald-100 font-semibold transition-all duration-150 flex items-center space-x-2.5 active:scale-95">
                                 <span>Sobre Mí</span>
-                                <i class="fas fa-user text-sm text-teal"></i>
+                                <i class="fas fa-user text-sm text-teal dark:text-teal-light"></i>
                             </a>
                         </div>
                         <!-- Redes Especializadas -->
-                        <div class="flex items-center space-x-5 pt-4 text-teal">
-                            <a href="https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0" target="_blank" title="Instagram" class="hover:text-peony text-2xl transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
-                            <a href="https://sketchfab.com/fm4th" target="_blank" title="Sketchfab" class="hover:text-peony transition transform hover:scale-110 inline-flex"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L21 7V17L12 22L3 17V7L12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 2V12M12 12L21 7M12 12L3 7M12 12V22" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></a>
-                            <a href="https://www.linkedin.com/in/francisca-correa-rojas-8a77a9259/" target="_blank" title="LinkedIn" class="hover:text-peony text-2xl transition transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
-                            <a href="mailto:francisca.correa.mathov@gmail.com" title="Correo" class="hover:text-peony text-2xl transition transform hover:scale-110"><i class="fas fa-envelope"></i></a>
+                        <div class="flex items-center space-x-5 pt-4 text-teal dark:text-teal-light">
+                            <a href="https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0" target="_blank" title="Instagram" class="hover:text-peony dark:hover:text-peony text-2xl transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                            <a href="https://sketchfab.com/fm4th" target="_blank" title="Sketchfab" class="hover:text-peony dark:hover:text-peony transition transform hover:scale-110 inline-flex"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L21 7V17L12 22L3 17V7L12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 2V12M12 12L3 7M12 12V22" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></a>
+                            <a href="https://www.linkedin.com/in/francisca-correa-rojas-8a77a9259/" target="_blank" title="LinkedIn" class="hover:text-peony dark:hover:text-peony text-2xl transition transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:francisca.correa.mathov@gmail.com" title="Correo" class="hover:text-peony dark:hover:text-peony text-2xl transition transform hover:scale-110"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
 
                     <!-- Foto personal -->
                     <div class="flex justify-center">
-                        <div class="relative w-full max-w-sm aspect-square rounded-3xl overflow-hidden border-2 border-cotton/80 bg-brandDark/95 shadow-2xl group">
-                            <!-- Reemplaza "mi-foto.jpg" por el nombre de tu archivo de imagen -->
-                            <img src="Foto_yo.jpg"alt="Foto de Francisca" class="w-full h-full object-cover">
+                        <div class="relative w-full max-w-sm aspect-square rounded-3xl overflow-hidden border-2 border-cotton/80 dark:border-teal/30 bg-brandDark/95 shadow-2xl group">
+                            <img src="Foto_yo.jpg" alt="Foto de Francisca" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="sobre-mi" class="py-20 bg-white/80 border-t border-cotton/50 scroll-mt-20">
+        <section id="sobre-mi" class="py-20 bg-white/80 dark:bg-darkBg/60 border-t border-cotton/50 dark:border-teal/20 scroll-mt-20 transition-colors duration-300">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-12">
-                    <h2 class="text-3xl sm:text-4xl font-bold font-december tracking-wide text-brandDark">Sobre Mí</h2>
-                    <p class="mt-3 text-brandDark/70">Un poco sobre mis habilidades y el software que utilizo.</p>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-december tracking-wide text-brandDark dark:text-emerald-50">Sobre Mí</h2>
+                    <p class="mt-3 text-brandDark/70 dark:text-emerald-100/70">Un poco sobre mis habilidades y el software que utilizo.</p>
                     <div class="w-16 h-1 bg-gradient-to-r from-peony to-teal mx-auto mt-3 rounded-full"></div>
                 </div>
 
-                <div class="max-w-3xl mx-auto space-y-4 bg-cotton/15 p-8 rounded-2xl border border-cotton/50 backdrop-blur shadow-sm">
+                <div class="max-w-3xl mx-auto space-y-4 bg-cotton/15 dark:bg-darkCard/80 p-8 rounded-2xl border border-cotton/50 dark:border-teal/20 backdrop-blur shadow-sm transition-colors duration-300">
                     <div class="flex items-center gap-3 mb-2">
                         <div class="p-2.5 bg-peony/15 text-peony rounded-xl">
                             <i class="fas fa-graduation-cap text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold font-december text-brandDark">Mi Perfil Académico</h3>
-                            <p class="text-xs text-brandDark/60">En Curso</p>
+                            <h3 class="text-2xl font-bold font-december text-brandDark dark:text-emerald-50">Mi Perfil Académico</h3>
+                            <p class="text-xs text-brandDark/60 dark:text-emerald-200/60">En Curso</p>
                         </div>
                     </div>
-                    <p class="text-brandDark/80 leading-relaxed">
-                        Soy estudiante de <strong class="text-peony-dark">Ingeniería en Realidad Virtual y Diseño de Juegos Digitales</strong> en la <strong class="text-brandDark">Universidad Bernardo O'Higgins</strong>.
+                    <p class="text-brandDark/80 dark:text-emerald-100/80 leading-relaxed">
+                        Soy estudiante de <strong class="text-peony-dark dark:text-peony-light">Ingeniería en Realidad Virtual y Diseño de Juegos Digitales</strong> en la <strong class="text-brandDark dark:text-white">Universidad Bernardo O'Higgins</strong>.
                     </p>
-                    <p class="text-brandDark/80 leading-relaxed">
+                    <p class="text-brandDark/80 dark:text-emerald-100/80 leading-relaxed">
                         Mis herramientas principales son <strong>Blender</strong> y <strong>Unity</strong>. También he trabajado, de forma más superficial, con <strong>Photoshop, Illustrator, After Effects, Unreal Engine</strong> y código básico en <strong>C#</strong>.
                     </p>
                     <div class="flex flex-wrap gap-2 pt-1">
-                        <span class="px-3 py-1 bg-peony/15 text-peony-dark text-xs font-semibold rounded-lg border border-peony/30">Blender</span>
-                        <span class="px-3 py-1 bg-teal/20 text-teal-dark text-xs font-semibold rounded-lg border border-teal/40">Unity</span>
-                        <span class="px-3 py-1 bg-cotton/50 text-brandDark text-xs font-semibold rounded-lg border border-cotton">Photoshop</span>
-                        <span class="px-3 py-1 bg-cotton/50 text-brandDark text-xs font-semibold rounded-lg border border-cotton">Illustrator</span>
-                        <span class="px-3 py-1 bg-cotton/50 text-brandDark text-xs font-semibold rounded-lg border border-cotton">After Effects</span>
-                        <span class="px-3 py-1 bg-cotton/50 text-brandDark text-xs font-semibold rounded-lg border border-cotton">Unreal Engine</span>
-                        <span class="px-3 py-1 bg-cotton/50 text-brandDark text-xs font-semibold rounded-lg border border-cotton">C#</span>
+                        <span class="px-3 py-1 bg-peony/15 text-peony-dark dark:text-peony-light text-xs font-semibold rounded-lg border border-peony/30">Blender</span>
+                        <span class="px-3 py-1 bg-teal/20 text-teal-dark dark:text-teal-light text-xs font-semibold rounded-lg border border-teal/40">Unity</span>
+                        <span class="px-3 py-1 bg-cotton/50 dark:bg-teal/10 text-brandDark dark:text-emerald-200 text-xs font-semibold rounded-lg border border-cotton dark:border-teal/30">Photoshop</span>
+                        <span class="px-3 py-1 bg-cotton/50 dark:bg-teal/10 text-brandDark dark:text-emerald-200 text-xs font-semibold rounded-lg border border-cotton dark:border-teal/30">Illustrator</span>
+                        <span class="px-3 py-1 bg-cotton/50 dark:bg-teal/10 text-brandDark dark:text-emerald-200 text-xs font-semibold rounded-lg border border-cotton dark:border-teal/30">After Effects</span>
+                        <span class="px-3 py-1 bg-cotton/50 dark:bg-teal/10 text-brandDark dark:text-emerald-200 text-xs font-semibold rounded-lg border border-cotton dark:border-teal/30">Unreal Engine</span>
+                        <span class="px-3 py-1 bg-cotton/50 dark:bg-teal/10 text-brandDark dark:text-emerald-200 text-xs font-semibold rounded-lg border border-cotton dark:border-teal/30">C#</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="proyectos" class="py-20 bg-white/80 border-t border-cotton/50 scroll-mt-20">
+        <section id="proyectos" class="py-20 bg-white/80 dark:bg-darkBg/60 border-t border-cotton/50 dark:border-teal/20 scroll-mt-20 transition-colors duration-300">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-12">
-                    <h2 class="text-3xl sm:text-4xl font-bold font-december tracking-wide text-brandDark">Proyectos de Videojuegos y 3D</h2>
-                    <p class="mt-3 text-brandDark/70">Haz clic en cualquier proyecto para abrir su <strong>página dedicada con el desglose técnico completo</strong>.</p>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-december tracking-wide text-brandDark dark:text-emerald-50">Proyectos de Videojuegos y 3D</h2>
+                    <p class="mt-3 text-brandDark/70 dark:text-emerald-100/70">Haz clic en cualquier proyecto para abrir su <strong>página dedicada con el desglose técnico completo</strong>.</p>
                     <div class="w-16 h-1 bg-gradient-to-r from-peony to-teal mx-auto mt-3 rounded-full"></div>
                 </div>
 
                 <!-- Botones de Filtro -->
                 <div class="flex flex-wrap justify-center gap-2 mb-10" id="filter-buttons">
                     <button data-filter="all" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-peony text-white shadow-md transition">Todos</button>
-                    <button data-filter="juegos" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-cotton/30 hover:bg-cotton/60 text-brandDark transition">Demos / Videojuegos</button>
-                    <button data-filter="modelado" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-cotton/30 hover:bg-cotton/60 text-brandDark transition">Personajes & Props 3D</button>
-                    <button data-filter="entornos" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-cotton/30 hover:bg-cotton/60 text-brandDark transition">Entornos Modular 3D</button>
+                    <button data-filter="juegos" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-cotton/30 dark:bg-darkCard hover:bg-cotton/60 dark:hover:bg-teal/20 text-brandDark dark:text-emerald-100 border border-transparent dark:border-teal/20 transition">Demos / Videojuegos</button>
+                    <button data-filter="modelado" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-cotton/30 dark:bg-darkCard hover:bg-cotton/60 dark:hover:bg-teal/20 text-brandDark dark:text-emerald-100 border border-transparent dark:border-teal/20 transition">Personajes & Props 3D</button>
+                    <button data-filter="entornos" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-cotton/30 dark:bg-darkCard hover:bg-cotton/60 dark:hover:bg-teal/20 text-brandDark dark:text-emerald-100 border border-transparent dark:border-teal/20 transition">Entornos Modular 3D</button>
                 </div>
 
-                <!-- Tarjetas de Proyectos -->
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
 
                     <!-- Tarjeta Proyecto 1 -->
-                    <div class="project-card group bg-white rounded-2xl overflow-hidden border border-cotton/70 shadow-sm hover:shadow-xl hover:border-peony/50 transition-all duration-300" data-category="juegos">
+                    <div class="project-card group bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-cotton/70 dark:border-teal/20 shadow-sm hover:shadow-xl hover:border-peony/50 dark:hover:border-peony/50 transition-all duration-300" data-category="juegos">
                         <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo(event, '#proyecto/Bola-de-cristal-navidad')">
                             <img src="RENDER_BOLA_DE_CRISTAL.png" alt="Demo Videojuego 3D en UE5" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
                             <span class="absolute top-3 right-3 bg-peony text-white text-xs font-semibold px-2.5 py-1 rounded-md shadow">Diorama</span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-peony transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Bola-de-cristal-navidad')">
+                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark dark:text-emerald-50 group-hover:text-peony transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Bola-de-cristal-navidad')">
                                 Bola de cristal navidad
                             </h3>
-                            <p class="text-brandDark/70 text-sm mb-4 line-clamp-2">
+                            <p class="text-brandDark/70 dark:text-emerald-100/70 text-sm mb-4 line-clamp-2">
                                 Diorama de una bola de cristal de navidad con Geometry Nodes.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-5">
-                                <span class="text-xs bg-cotton/30 border border-cotton/60 px-2.5 py-1 rounded-md text-brandDark">Blender</span>
-                                <span class="text-xs bg-cotton/30 border border-cotton/60 px-2.5 py-1 rounded-md text-brandDark">Geometry Nodes</span>
-                                <span class="text-xs bg-cotton/30 border border-cotton/60 px-2.5 py-1 rounded-md text-brandDark">Diorama</span>
+                                <span class="text-xs bg-cotton/30 dark:bg-teal/10 border border-cotton/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">Blender</span>
+                                <span class="text-xs bg-cotton/30 dark:bg-teal/10 border border-cotton/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">Geometry Nodes</span>
+                                <span class="text-xs bg-cotton/30 dark:bg-teal/10 border border-cotton/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">Diorama</span>
                             </div>
                             <a href="#proyecto/Bola-de-cristal-navidad" onclick="navigateTo(event, '#proyecto/Bola-de-cristal-navidad')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-peony to-carnation hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
                                 <span>Ver Proyecto</span>
@@ -250,22 +265,22 @@
                     </div>
 
                     <!-- Tarjeta Proyecto 2 -->
-                    <div class="project-card group bg-white rounded-2xl overflow-hidden border border-cotton/70 shadow-sm hover:shadow-xl hover:border-teal/50 transition-all duration-300" data-category="modelado">
+                    <div class="project-card group bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-cotton/70 dark:border-teal/20 shadow-sm hover:shadow-xl hover:border-teal/50 transition-all duration-300" data-category="modelado">
                         <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo(event, '#proyecto/Juego-de-terraza-de-mimbre')">
                             <img src="RENDER_MIMBRE_N1.png" alt="Personaje 3D Game Ready" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
                             <span class="absolute top-3 right-3 bg-teal text-white text-xs font-semibold px-2.5 py-1 rounded-md shadow">Props</span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-teal transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Juego-de-terraza-de-mimbre')">
+                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark dark:text-emerald-50 group-hover:text-teal transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Juego-de-terraza-de-mimbre')">
                                 Juego de terraza de mimbre
                             </h3>
-                            <p class="text-brandDark/70 text-sm mb-4 line-clamp-2">
+                            <p class="text-brandDark/70 dark:text-emerald-100/70 text-sm mb-4 line-clamp-2">
                                 Terraza hecha con textura PBR.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-5">
-                                <span class="text-xs bg-sage/30 border border-sage/60 px-2.5 py-1 rounded-md text-brandDark">Blender</span>
-                                <span class="text-xs bg-sage/30 border border-sage/60 px-2.5 py-1 rounded-md text-brandDark">Props</span>
-                                <span class="text-xs bg-sage/30 border border-sage/60 px-2.5 py-1 rounded-md text-brandDark">PBR</span>
+                                <span class="text-xs bg-sage/30 dark:bg-teal/10 border border-sage/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">Blender</span>
+                                <span class="text-xs bg-sage/30 dark:bg-teal/10 border border-sage/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">Props</span>
+                                <span class="text-xs bg-sage/30 dark:bg-teal/10 border border-sage/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">PBR</span>
                             </div>
                             <a href="#proyecto/Juego-de-terraza-de-mimbre" onclick="navigateTo(event, '#proyecto/Juego-de-terraza-de-mimbre')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-teal to-sage-dark hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
                                 <span>Ver Proyecto</span>
@@ -275,21 +290,21 @@
                     </div>
 
                     <!-- Tarjeta Proyecto 3 -->
-                    <div class="project-card group bg-white rounded-2xl overflow-hidden border border-cotton/70 shadow-sm hover:shadow-xl hover:border-carnation/50 transition-all duration-300" data-category="entornos">
+                    <div class="project-card group bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-cotton/70 dark:border-teal/20 shadow-sm hover:shadow-xl hover:border-carnation/50 transition-all duration-300" data-category="entornos">
                         <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo(event, '#proyecto/Fanmade-avion-peak')">
                             <img src="RENDER_AVION_N1.png" alt="Entorno Sci-Fi Modular 3D" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
                             <span class="absolute top-3 right-3 bg-carnation text-white text-xs font-semibold px-2.5 py-1 rounded-md shadow">Props</span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-carnation-dark transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Fanmade-avion-peak')">
+                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark dark:text-emerald-50 group-hover:text-carnation-dark transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Fanmade-avion-peak')">
                                 Fanmade avión videojuego Peak
                             </h3>
-                            <p class="text-brandDark/70 text-sm mb-4 line-clamp-2">
+                            <p class="text-brandDark/70 dark:text-emerald-100/70 text-sm mb-4 line-clamp-2">
                                 Fanmade del avión, creado para un proyecto grupal.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-5">
-                                <span class="text-xs bg-cotton/30 border border-cotton/60 px-2.5 py-1 rounded-md text-brandDark">Blender</span>
-                                <span class="text-xs bg-cotton/30 border border-cotton/60 px-2.5 py-1 rounded-md text-brandDark">Props</span>
+                                <span class="text-xs bg-cotton/30 dark:bg-teal/10 border border-cotton/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">Blender</span>
+                                <span class="text-xs bg-cotton/30 dark:bg-teal/10 border border-cotton/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">Props</span>
                             </div>
                             <a href="#proyecto/Fanmade-avion-peak" onclick="navigateTo(event, '#proyecto/Fanmade-avion-peak')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-carnation-dark to-peony hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
                                 <span>Ver Proyecto</span>
@@ -299,22 +314,22 @@
                     </div>
 
                     <!-- Tarjeta Proyecto 4 -->
-                    <div class="project-card group bg-white rounded-2xl overflow-hidden border border-cotton/70 shadow-sm hover:shadow-xl hover:border-teal/50 transition-all duration-300" data-category="modelado">
+                    <div class="project-card group bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-cotton/70 dark:border-teal/20 shadow-sm hover:shadow-xl hover:border-teal/50 transition-all duration-300" data-category="modelado">
                         <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo(event, '#proyecto/Iglu')">
                             <img src="RENDER_IGLU_1.png" alt="Prop 3D de Iglu" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
                             <span class="absolute top-3 right-3 bg-teal text-white text-xs font-semibold px-2.5 py-1 rounded-md shadow">Props</span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-teal transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Iglu')">
+                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark dark:text-emerald-50 group-hover:text-teal transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Iglu')">
                                 Iglu
                             </h3>
-                            <p class="text-brandDark/70 text-sm mb-4 line-clamp-2">
+                            <p class="text-brandDark/70 dark:text-emerald-100/70 text-sm mb-4 line-clamp-2">
                                 Prop creado para una animación de pingüinos.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-5">
-                                <span class="text-xs bg-sage/30 border border-sage/60 px-2.5 py-1 rounded-md text-brandDark">Blender</span>
-                                <span class="text-xs bg-sage/30 border border-sage/60 px-2.5 py-1 rounded-md text-brandDark">Props</span>
-                                <span class="text-xs bg-sage/30 border border-sage/60 px-2.5 py-1 rounded-md text-brandDark">PBR</span>
+                                <span class="text-xs bg-sage/30 dark:bg-teal/10 border border-sage/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">Blender</span>
+                                <span class="text-xs bg-sage/30 dark:bg-teal/10 border border-sage/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">Props</span>
+                                <span class="text-xs bg-sage/30 dark:bg-teal/10 border border-sage/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">PBR</span>
                             </div>
                             <a href="#proyecto/Iglu" onclick="navigateTo(event, '#proyecto/Iglu')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-teal to-sage-dark hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
                                 <span>Ver Proyecto</span>
@@ -328,7 +343,7 @@
         </section>
 
         <!-- Footer Main -->
-        <footer class="bg-cotton/20 py-8 border-t border-cotton/50 text-center text-sm text-brandDark/70">
+        <footer class="bg-cotton/20 dark:bg-darkBg/90 py-8 border-t border-cotton/50 dark:border-teal/20 text-center text-sm text-brandDark/70 dark:text-emerald-200/60 transition-colors duration-300">
             <div class="max-w-6xl mx-auto px-4 space-y-2">
                 <p>© <span class="year-field"></span> Francisca Correa.</p>
             </div>
@@ -342,7 +357,7 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Migas de pan & Botón Volver Integrado -->
-            <div class="flex flex-wrap items-center justify-between gap-4 text-sm text-brandDark/60 mb-8 border-b border-cotton/50 pb-4">
+            <div class="flex flex-wrap items-center justify-between gap-4 text-sm text-brandDark/60 dark:text-emerald-200/60 mb-8 border-b border-cotton/50 dark:border-teal/20 pb-4">
                 <div class="flex items-center gap-2">
                     <a href="#" onclick="navigateTo(event, '#proyectos')" class="hover:text-peony transition flex items-center gap-1.5">
                         <i class="fas fa-home text-xs"></i> Inicio
@@ -350,7 +365,7 @@
                     <span>/</span>
                     <a href="#" onclick="navigateTo(event, '#proyectos')" class="hover:text-peony transition">Proyectos</a>
                     <span>/</span>
-                    <span id="detail-breadcrumb-title" class="text-brandDark font-medium font-december">Proyecto</span>
+                    <span id="detail-breadcrumb-title" class="text-brandDark dark:text-emerald-100 font-medium font-december">Proyecto</span>
                 </div>
             </div>
 
@@ -362,15 +377,53 @@
         </div>
 
         <!-- Footer Secundario en detalle -->
-        <footer class="mt-20 bg-cotton/20 py-8 border-t border-cotton/50 text-center text-sm text-brandDark/70">
+        <footer class="mt-20 bg-cotton/20 dark:bg-darkBg/90 py-8 border-t border-cotton/50 dark:border-teal/20 text-center text-sm text-brandDark/70 dark:text-emerald-200/60 transition-colors duration-300">
             <div class="max-w-6xl mx-auto px-4">
                 <p>© <span class="year-field"></span> Francisca. Todos los derechos reservados.</p>
             </div>
         </footer>
     </div>
 
-    <!-- Script de Enrutamiento Dinámico y Lógica -->
     <script>
+        // Lógica de Persistencia y Alternancia de Modo Oscuro
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+                updateThemeIcons(true);
+            } else {
+                document.documentElement.classList.remove('dark');
+                updateThemeIcons(false);
+            }
+        }
+
+        function toggleDarkMode() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeIcons(isDark);
+        }
+
+        function updateThemeIcons(isDark) {
+            const iconDesktop = document.getElementById('theme-toggle-icon');
+            const iconMobile = document.getElementById('theme-toggle-icon-mobile');
+            const labelMobile = document.getElementById('theme-toggle-label-mobile');
+
+            if (iconDesktop) {
+                iconDesktop.className = isDark ? 'fas fa-sun text-amber-300 text-base' : 'fas fa-moon text-brandDark text-base';
+            }
+            if (iconMobile) {
+                iconMobile.className = isDark ? 'fas fa-sun text-amber-300 text-base' : 'fas fa-moon text-brandDark text-base';
+            }
+            if (labelMobile) {
+                labelMobile.textContent = isDark ? 'Modo Claro' : 'Modo Oscuro';
+            }
+        }
+
+        // Ejecutar tema inicial antes de renderizar
+        initTheme();
+
         const projectsData = {
             'Bola-de-cristal-navidad': {
                 title: 'Bola de cristal navidad',
@@ -387,15 +440,15 @@
                 instagramUrl: 'https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0',
                 summary: 'Se nos pidió crear un diorama de una habitación, pero el semestre cerraría justo cerca de la época navideña, con el permiso del profesor decidí inspirarme en la época y crear esta bola de cristal navideña.',
                 overviewHtml: `
-                    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Desafíos Técnicos y Soluciones</h3>
+                    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Desafíos Técnicos y Soluciones</h3>
                     <div class="space-y-4 mb-8">
-                        <div class="p-4 bg-cotton/20 rounded-xl border border-cotton/60">
-                            <h4 class="font-semibold text-peony mb-1">1. Implementación Geometry Nodes</h4>
-                            <p class="text-sm text-brandDark/80">La entrega inicial fue hecha con varios modelos diferentes para cada regalo y adorno. El semestre siguiente se nos enseñó la herramienta de geometry nodes para optimizar los modelos, estos geometry nodes ya están aplicados actualmente en el modelo.</p>
+                        <div class="p-4 bg-cotton/20 dark:bg-darkCard/80 rounded-xl border border-cotton/60 dark:border-teal/20">
+                            <h4 class="font-semibold text-peony dark:text-peony-light mb-1">1. Implementación Geometry Nodes</h4>
+                            <p class="text-sm text-brandDark/80 dark:text-emerald-100/80">La entrega inicial fue hecha con varios modelos diferentes para cada regalo y adorno. El semestre siguiente se nos enseñó la herramienta de geometry nodes para optimizar los modelos, estos geometry nodes ya están aplicados actualmente en el modelo.</p>
                         </div>
-                        <div class="p-4 bg-cotton/20 rounded-xl border border-cotton/60">
-                            <h4 class="font-semibold text-peony mb-1">2. Bake de Texturas</h4>
-                            <p class="text-sm text-brandDark/80">Para esta entrega se nos pidió dividir el diorama en grupos de objetos pequeños, medianos, grandes y complejos. Mi diorama al tener muchos objetos pequeños hacía que las UV fueran pequeñas haciendo que las texturas quedaran en menor calidad. Esto se solucionó con la implementación de los Geometry Nodes.</p>
+                        <div class="p-4 bg-cotton/20 dark:bg-darkCard/80 rounded-xl border border-cotton/60 dark:border-teal/20">
+                            <h4 class="font-semibold text-peony dark:text-peony-light mb-1">2. Bake de Texturas</h4>
+                            <p class="text-sm text-brandDark/80 dark:text-emerald-100/80">Para esta entrega se nos pidió dividir el diorama en grupos de objetos pequeños, medianos, grandes y complejos. Mi diorama al tener muchos objetos pequeños hacía que las UV fueran pequeñas haciendo que las texturas quedaran en menor calidad. Esto se solucionó con la implementación de los Geometry Nodes.</p>
                         </div>
                     </div>
                 `
@@ -415,8 +468,8 @@
                 instagramUrl: 'https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0',
                 summary: 'Juego de mesa creado en base a una referencia real, con textura PBR',
                 overviewHtml: `
-                    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Etapas del Desarrollo</h3>
-                    <ol class="list-decimal list-inside space-y-3 text-brandDark/80 mb-8">
+                    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Etapas del Desarrollo</h3>
+                    <ol class="list-decimal list-inside space-y-3 text-brandDark/80 dark:text-emerald-100/80 mb-8">
                         <li><strong>Selección de referencia a modelar: </strong> Se nos dio 3 referencias a elegir para modelar, incluyendo tipo de cojines y tazas.</li>
                         <li><strong>Modelado: </strong> Se modelaron las referencias, incluyendo la curvatura de cada modelo.</li>
                         <li><strong>Texturizado:</strong> Se tuvo que sacar texturas PBR de internet para poder crear el mimbre.</li>
@@ -437,15 +490,15 @@
                 instagramUrl: 'https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0',
                 summary: 'Prop creado para un escenario inspirado en Peak para poder implementar LOD, Occlusion Culling y bake de luces.',
                 overviewHtml: `
-                    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Características Destacadas</h3>
+                    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Características Destacadas</h3>
                     <div class="grid md:grid-cols-2 gap-4 mb-8">
-                        <div class="p-4 bg-sage/20 rounded-xl border border-sage/60">
-                            <h4 class="font-semibold text-teal-dark mb-1">Sticker</h4>
-                            <p class="text-sm text-brandDark/80">El logo del avión fue hecho con un sticker de Blender.</p>
+                        <div class="p-4 bg-sage/20 dark:bg-darkCard/80 rounded-xl border border-sage/60 dark:border-teal/20">
+                            <h4 class="font-semibold text-teal-dark dark:text-teal-light mb-1">Sticker</h4>
+                            <p class="text-sm text-brandDark/80 dark:text-emerald-100/80">El logo del avión fue hecho con un sticker de Blender.</p>
                         </div>
-                        <div class="p-4 bg-sage/20 rounded-xl border border-sage/60">
-                            <h4 class="font-semibold text-teal-dark mb-1">Stencil</h4>
-                            <p class="text-sm text-brandDark/80">Las letras fueron puestas con un stencil.</p>
+                        <div class="p-4 bg-sage/20 dark:bg-darkCard/80 rounded-xl border border-sage/60 dark:border-teal/20">
+                            <h4 class="font-semibold text-teal-dark dark:text-teal-light mb-1">Stencil</h4>
+                            <p class="text-sm text-brandDark/80 dark:text-emerald-100/80">Las letras fueron puestas con un stencil.</p>
                         </div>
                     </div>
                 `
@@ -464,10 +517,10 @@
                 instagramUrl: 'https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0',
                 summary: 'Prop creado para una animación de pingüinos.',
                 overviewHtml: `
-                    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Características Destacadas</h3>
-                    <div class="p-4 bg-sage/20 rounded-xl border border-sage/60 mb-8">
-                        <h4 class="font-semibold text-teal-dark mb-1">Modificadores de Array y Textura PBR</h4>
-                        <p class="text-sm text-brandDark/80">El iglú fue creado utilizando modificadores de array para generar los bloques de hielo, junto con texturizado PBR.</p>
+                    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Características Destacadas</h3>
+                    <div class="p-4 bg-sage/20 dark:bg-darkCard/80 rounded-xl border border-sage/60 dark:border-teal/20 mb-8">
+                        <h4 class="font-semibold text-teal-dark dark:text-teal-light mb-1">Modificadores de Array y Textura PBR</h4>
+                        <p class="text-sm text-brandDark/80 dark:text-emerald-100/80">El iglú fue creado utilizando modificadores de array para generar los bloques de hielo, junto con texturizado PBR.</p>
                     </div>
                 `
             }
@@ -481,7 +534,7 @@
             if (!project) {
                 detailContainer.innerHTML = `
                     <div class="text-center py-20">
-                        <h2 class="text-2xl font-bold font-december text-brandDark">Proyecto no encontrado</h2>
+                        <h2 class="text-2xl font-bold font-december text-brandDark dark:text-emerald-50">Proyecto no encontrado</h2>
                         <a href="#" onclick="navigateTo(event, '#proyectos')" class="mt-4 inline-block px-5 py-2.5 bg-peony hover:bg-peony-dark text-white rounded-xl font-semibold transition">Volver a Proyectos</a>
                     </div>
                 `;
@@ -494,57 +547,57 @@
             detailContainer.innerHTML = `
                 <!-- Cabecera del Proyecto -->
                 <div class="mb-8">
-                    <span class="px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-peony bg-peony/15 rounded-full border border-peony/30">
+                    <span class="px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-peony dark:text-peony-light bg-peony/15 rounded-full border border-peony/30">
                         ${project.category}
                     </span>
-                    <h1 class="text-3xl sm:text-4xl font-bold font-december mt-3 mb-2 text-brandDark">${project.title}</h1>
-                    <p class="text-brandDark/70 text-lg">${project.subtitle}</p>
+                    <h1 class="text-3xl sm:text-4xl font-bold font-december mt-3 mb-2 text-brandDark dark:text-emerald-50">${project.title}</h1>
+                    <p class="text-brandDark/70 dark:text-emerald-100/70 text-lg">${project.subtitle}</p>
                 </div>
 
-                <!-- Banner Principal ampliable con indicador visual -->
-                <div class="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden mb-10 shadow-xl border border-cotton group cursor-pointer" onclick="openLightbox('${project.bannerImage}')">
+                <!-- Banner Principal ampliable -->
+                <div class="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden mb-10 shadow-xl border border-cotton dark:border-teal/20 group cursor-pointer" onclick="openLightbox('${project.bannerImage}')">
                     <img src="${project.bannerImage}" alt="${project.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     <div class="absolute inset-0 bg-brandDark/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                        <span class="bg-white/90 backdrop-blur px-4 py-2 rounded-xl text-xs font-semibold text-brandDark shadow flex items-center gap-2">
+                        <span class="bg-white/90 dark:bg-darkCard/90 backdrop-blur px-4 py-2 rounded-xl text-xs font-semibold text-brandDark dark:text-emerald-100 shadow flex items-center gap-2">
                             <i class="fas fa-search-plus"></i> Ampliar Imagen
                         </span>
                     </div>
                 </div>
 
-                <!-- Grilla Principal: Ficha Técnica (Izquierda) + Información Extensa (Derecha) -->
+                <!-- Grilla Principal: Ficha Técnica + Información Extensa -->
                 <div class="grid lg:grid-cols-3 gap-10">
                     
                     <!-- Ficha Técnica Lateral -->
                     <div class="space-y-6">
-                        <div class="bg-white p-6 rounded-2xl border border-cotton shadow-sm space-y-4">
-                            <h3 class="font-bold font-december text-xl text-brandDark border-b border-cotton pb-3">Ficha Técnica</h3>
+                        <div class="bg-white dark:bg-darkCard p-6 rounded-2xl border border-cotton dark:border-teal/20 shadow-sm space-y-4">
+                            <h3 class="font-bold font-december text-xl text-brandDark dark:text-emerald-50 border-b border-cotton dark:border-teal/20 pb-3">Ficha Técnica</h3>
                             
                             <div>
-                                <span class="text-xs text-brandDark/60 uppercase font-semibold">Motor / Entorno</span>
-                                <p class="text-sm font-medium text-brandDark">${project.engine}</p>
+                                <span class="text-xs text-brandDark/60 dark:text-emerald-200/60 uppercase font-semibold">Motor / Entorno</span>
+                                <p class="text-sm font-medium text-brandDark dark:text-emerald-100">${project.engine}</p>
                             </div>
                             ${project.language ? `
                             <div>
-                                <span class="text-xs text-brandDark/60 uppercase font-semibold">Software / Lenguaje</span>
-                                <p class="text-sm font-medium text-brandDark">${project.language}</p>
+                                <span class="text-xs text-brandDark/60 dark:text-emerald-200/60 uppercase font-semibold">Software / Lenguaje</span>
+                                <p class="text-sm font-medium text-brandDark dark:text-emerald-100">${project.language}</p>
                             </div>
                             ` : ''}
                             ${project.role ? `
                             <div>
-                                <span class="text-xs text-brandDark/60 uppercase font-semibold">Rol en el Proyecto</span>
-                                <p class="text-sm font-medium text-brandDark">${project.role}</p>
+                                <span class="text-xs text-brandDark/60 dark:text-emerald-200/60 uppercase font-semibold">Rol en el Proyecto</span>
+                                <p class="text-sm font-medium text-brandDark dark:text-emerald-100">${project.role}</p>
                             </div>
                             ` : ''}
                             <div>
-                                <span class="text-xs text-brandDark/60 uppercase font-semibold">Tiempo de Desarrollo</span>
-                                <p class="text-sm font-medium text-brandDark">${project.duration}</p>
+                                <span class="text-xs text-brandDark/60 dark:text-emerald-200/60 uppercase font-semibold">Tiempo de Desarrollo</span>
+                                <p class="text-sm font-medium text-brandDark dark:text-emerald-100">${project.duration}</p>
                             </div>
                         </div>
 
                         ${(project.instagramUrl || project.sketchfabUrl) ? `
                         <!-- Enlaces Directos del Proyecto -->
-                        <div class="bg-brandDark text-white p-6 rounded-2xl border border-cotton space-y-3 shadow-sm">
-                            <h4 class="font-bold font-december mb-2 text-sm text-carnation uppercase tracking-wider">Recursos y Archivos</h4>
+                        <div class="bg-brandDark dark:bg-darkCard text-white p-6 rounded-2xl border border-cotton dark:border-teal/20 space-y-3 shadow-sm">
+                            <h4 class="font-bold font-december mb-2 text-sm text-carnation dark:text-carnation-light uppercase tracking-wider">Recursos y Archivos</h4>
                             ${project.instagramUrl ? `
                             <a href="${project.instagramUrl}" target="_blank" class="flex items-center justify-between p-3 bg-white/10 hover:bg-white/20 rounded-xl transition text-sm">
                                 <span class="flex items-center gap-2.5"><i class="fab fa-instagram text-carnation"></i> Ver en Instagram</span>
@@ -563,8 +616,8 @@
 
                     <!-- Cuerpo Extenso de la Página -->
                     <div class="lg:col-span-2 space-y-8">
-                        <div class="bg-white p-8 rounded-2xl border border-cotton shadow-sm">
-                            <p class="text-lg font-medium text-brandDark mb-6 italic border-l-4 border-peony pl-4">
+                        <div class="bg-white dark:bg-darkCard p-8 rounded-2xl border border-cotton dark:border-teal/20 shadow-sm">
+                            <p class="text-lg font-medium text-brandDark dark:text-emerald-100 mb-6 italic border-l-4 border-peony pl-4">
                                 "${project.summary}"
                             </p>
                             ${project.overviewHtml}
@@ -572,10 +625,10 @@
 
                         <!-- Galería de Renders y Capturas del Proyecto Ampliables -->
                         <div>
-                            <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Galería de Capturas & Renders</h3>
+                            <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Galería de Capturas & Renders</h3>
                             <div class="grid sm:grid-cols-3 gap-4">
                                 ${project.gallery.map((imgUrl, idx) => `
-                                    <div class="h-40 rounded-xl overflow-hidden border border-cotton shadow-sm group cursor-pointer relative" onclick="openGalleryLightbox(${idx})">
+                                    <div class="h-40 rounded-xl overflow-hidden border border-cotton dark:border-teal/20 shadow-sm group cursor-pointer relative" onclick="openGalleryLightbox(${idx})">
                                         <img src="${imgUrl}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
                                         <div class="absolute inset-0 bg-brandDark/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                                             <i class="fas fa-search-plus text-white text-lg"></i>
@@ -592,17 +645,17 @@
 
         const lightboxModal = document.createElement('div');
         lightboxModal.id = 'lightbox-modal';
-        lightboxModal.className = 'fixed inset-0 z-50 bg-brandDark/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 sm:p-6';
+        lightboxModal.className = 'fixed inset-0 z-50 bg-brandDark/85 dark:bg-black/90 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 sm:p-6';
         lightboxModal.innerHTML = `
             <div id="lightbox-container" class="relative max-w-5xl max-h-[90vh] w-full flex flex-col items-center transform scale-95 transition-transform duration-300">
-                <button onclick="closeLightbox()" class="absolute -top-12 right-0 sm:-right-2 text-cotton hover:text-peony text-xs font-semibold tracking-wider uppercase transition flex items-center gap-2 bg-brandDark/70 px-3.5 py-1.5 rounded-xl border border-cotton/30 backdrop-blur shadow-lg">
+                <button onclick="closeLightbox()" class="absolute -top-12 right-0 sm:-right-2 text-cotton hover:text-peony text-xs font-semibold tracking-wider uppercase transition flex items-center gap-2 bg-brandDark/70 dark:bg-darkCard/90 px-3.5 py-1.5 rounded-xl border border-cotton/30 dark:border-teal/30 backdrop-blur shadow-lg">
                     <i class="fas fa-times"></i> Cerrar [ESC]
                 </button>
-                <button id="lightbox-prev" onclick="showPrevImage(event)" class="absolute left-1 sm:-left-14 top-1/2 -translate-y-1/2 text-cotton hover:text-peony text-lg transition bg-brandDark/70 w-10 h-10 rounded-full border border-cotton/30 backdrop-blur shadow-lg flex items-center justify-center">
+                <button id="lightbox-prev" onclick="showPrevImage(event)" class="absolute left-1 sm:-left-14 top-1/2 -translate-y-1/2 text-cotton hover:text-peony text-lg transition bg-brandDark/70 dark:bg-darkCard/90 w-10 h-10 rounded-full border border-cotton/30 dark:border-teal/30 backdrop-blur shadow-lg flex items-center justify-center">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <img id="lightbox-img" src="" class="max-h-[82vh] max-w-full rounded-2xl object-contain shadow-2xl border-2 border-cotton/40 bg-brandDark/90">
-                <button id="lightbox-next" onclick="showNextImage(event)" class="absolute right-1 sm:-right-14 top-1/2 -translate-y-1/2 text-cotton hover:text-peony text-lg transition bg-brandDark/70 w-10 h-10 rounded-full border border-cotton/30 backdrop-blur shadow-lg flex items-center justify-center">
+                <img id="lightbox-img" src="" class="max-h-[82vh] max-w-full rounded-2xl object-contain shadow-2xl border-2 border-cotton/40 dark:border-teal/30 bg-brandDark/90">
+                <button id="lightbox-next" onclick="showNextImage(event)" class="absolute right-1 sm:-right-14 top-1/2 -translate-y-1/2 text-cotton hover:text-peony text-lg transition bg-brandDark/70 dark:bg-darkCard/90 w-10 h-10 rounded-full border border-cotton/30 dark:border-teal/30 backdrop-blur shadow-lg flex items-center justify-center">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -643,7 +696,6 @@
             const img = document.getElementById('lightbox-img');
             const container = document.getElementById('lightbox-container');
 
-            // Si se abre una sola imagen suelta (ej. banner), se desactiva la navegación
             if (!activeGalleryImages.includes(imgSrc)) {
                 activeGalleryImages = [];
             }
@@ -653,7 +705,6 @@
             lightboxModal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
 
-            // Activar animación suave de fundido y zoom
             setTimeout(() => {
                 lightboxModal.classList.remove('opacity-0');
                 container.classList.remove('scale-95');
@@ -673,7 +724,6 @@
             }, 300);
         }
 
-        // Cerrar con tecla ESC y navegar la galería con las flechas del teclado
         window.addEventListener('keydown', (e) => {
             if (lightboxModal.classList.contains('hidden')) return;
             if (e.key === 'Escape') closeLightbox();
@@ -681,13 +731,10 @@
             if (e.key === 'ArrowLeft') showPrevImage();
         });
 
-        // Cerrar haciendo clic fuera de la imagen
         lightboxModal.addEventListener('click', (e) => {
             if (e.target === lightboxModal) closeLightbox();
         });
 
-        // Animación de scroll propia, con curva de aceleración/desaceleración y
-        // duración fija, para que la transición se sienta igual en cualquier navegador.
         function easeInOutCubic(t) {
             return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
         }
@@ -711,7 +758,7 @@
         function scrollToSection(targetId) {
             const targetEl = document.getElementById(targetId);
             if (!targetEl) return;
-            const headerOffset = 80; // debe coincidir con la clase scroll-mt-20 (5rem) de las secciones
+            const headerOffset = 80;
             const targetY = targetEl.getBoundingClientRect().top + window.scrollY - headerOffset;
             smoothScrollTo(Math.max(targetY, 0));
         }
@@ -728,9 +775,7 @@
                 homeView.classList.add('hidden');
                 detailView.classList.remove('hidden');
                 
-                // Ocultar menú de escritorio y mostrar botón volver
                 mainNavLinks.classList.add('hidden');
-                mainNavLinks.classList.remove('md:flex');
                 backNav.classList.remove('hidden');
                 
                 renderProjectDetail(projectId);
@@ -739,14 +784,9 @@
                 detailView.classList.add('hidden');
                 homeView.classList.remove('hidden');
                 
-                // Restaurar visibilidad responsive correcta del menú en escritorio
                 mainNavLinks.classList.remove('hidden');
-                mainNavLinks.classList.add('hidden', 'md:flex');
                 backNav.classList.add('hidden');
 
-                // Desplazamiento suave a la sección correspondiente (Inicio, Sobre Mí o Proyectos).
-                // Se usa requestAnimationFrame porque la sección recién se vuelve visible arriba,
-                // y el navegador necesita al menos un frame para calcular su posición real.
                 const targetId = hash === '#' ? 'inicio' : hash.replace('#', '');
                 requestAnimationFrame(() => {
                     scrollToSection(targetId);
@@ -759,8 +799,6 @@
             const isSameHash = window.location.hash === hash;
             window.location.hash = hash;
             closeMobileMenu();
-            // Si el hash no cambia, el navegador no dispara 'hashchange', así que
-            // forzamos el enrutamiento manualmente para que el scroll siempre ocurra.
             if (isSameHash) {
                 handleRouting();
             }
@@ -773,21 +811,18 @@
         window.addEventListener('hashchange', handleRouting);
         window.addEventListener('load', handleRouting);
 
-        // Control de los botones de filtrado de proyectos
         document.addEventListener('DOMContentLoaded', () => {
             const filterButtons = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
 
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    // Remover estilos activos de todos los botones
                     filterButtons.forEach(btn => {
                         btn.classList.remove('bg-peony', 'text-white', 'shadow-md');
-                        btn.classList.add('bg-cotton/30', 'hover:bg-cotton/60', 'text-brandDark');
+                        btn.classList.add('bg-cotton/30', 'dark:bg-darkCard', 'hover:bg-cotton/60', 'dark:hover:bg-teal/20', 'text-brandDark', 'dark:text-emerald-100');
                     });
 
-                    // Añadir estilos activos al botón seleccionado
-                    button.classList.remove('bg-cotton/30', 'hover:bg-cotton/60', 'text-brandDark');
+                    button.classList.remove('bg-cotton/30', 'dark:bg-darkCard', 'hover:bg-cotton/60', 'dark:hover:bg-teal/20', 'text-brandDark', 'dark:text-emerald-100');
                     button.classList.add('bg-peony', 'text-white', 'shadow-md');
 
                     const filterValue = button.getAttribute('data-filter');
@@ -807,124 +842,11 @@
         // Control Menú Móvil
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const canvas = document.getElementById('canvas3d');
-            if (!canvas) return;
-
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-            camera.position.z = 6;
-
-            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-            // Geometría y materiales combinados de la paleta
-            const geometry = new THREE.IcosahedronGeometry(1.8, 0);
-            const material = new THREE.MeshStandardMaterial({
-                color: 0xE06C9F, // Peony
-                roughness: 0.3,
-                metalness: 0.2,
-                flatShading: true
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
-            const mesh = new THREE.Mesh(geometry, material);
-            scene.add(mesh);
-
-            // Malla alámbrica superpuesta
-            const wireGeometry = new THREE.IcosahedronGeometry(1.95, 0);
-            const wireMaterial = new THREE.MeshBasicMaterial({
-                color: 0x6E9887, // Teal
-                wireframe: true,
-                transparent: true,
-                opacity: 0.4
-            });
-            const wireMesh = new THREE.Mesh(wireGeometry, wireMaterial);
-            scene.add(wireMesh);
-
-            // Iluminación
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-            scene.add(ambientLight);
-
-            const pointLight = new THREE.PointLight(0xF283B6, 2, 50); // Carnation
-            pointLight.position.set(5, 5, 5);
-            scene.add(pointLight);
-
-            const pointLight2 = new THREE.PointLight(0x6E9887, 1.5, 50); // Teal
-            pointLight2.position.set(-5, -5, -5);
-            scene.add(pointLight2);
-
-            // Control de rotación interactiva (Ratón y Táctil Móvil)
-            let isDragging = false;
-            let previousMousePosition = { x: 0, y: 0 };
-
-            function startInteraction(clientX, clientY) {
-                isDragging = true;
-                previousMousePosition = { x: clientX, y: clientY };
-            }
-
-            function moveInteraction(clientX, clientY) {
-                if (!isDragging) return;
-                const deltaX = clientX - previousMousePosition.x;
-                const deltaY = clientY - previousMousePosition.y;
-
-                mesh.rotation.y += deltaX * 0.008;
-                mesh.rotation.x += deltaY * 0.008;
-                wireMesh.rotation.y = mesh.rotation.y;
-                wireMesh.rotation.x = mesh.rotation.x;
-
-                previousMousePosition = { x: clientX, y: clientY };
-            }
-
-            function endInteraction() {
-                isDragging = false;
-            }
-
-            // Eventos de Ratón
-            canvas.addEventListener('mousedown', (e) => startInteraction(e.clientX, e.clientY));
-            window.addEventListener('mousemove', (e) => moveInteraction(e.clientX, e.clientY));
-            window.addEventListener('mouseup', endInteraction);
-
-            // Eventos Táctiles (Móviles y Tablets)
-            canvas.addEventListener('touchstart', (e) => {
-                if (e.touches.length === 1) {
-                    startInteraction(e.touches[0].clientX, e.touches[0].clientY);
-                }
-            }, { passive: true });
-
-            window.addEventListener('touchmove', (e) => {
-                if (isDragging && e.touches.length === 1) {
-                    moveInteraction(e.touches[0].clientX, e.touches[0].clientY);
-                }
-            }, { passive: true });
-
-            window.addEventListener('touchend', endInteraction);
-
-            // Bucle de animación y render
-            function animate() {
-                requestAnimationFrame(animate);
-                if (!isDragging) {
-                    mesh.rotation.y += 0.004;
-                    mesh.rotation.x += 0.002;
-                    wireMesh.rotation.y = mesh.rotation.y;
-                    wireMesh.rotation.x = mesh.rotation.x;
-                }
-                renderer.render(scene, camera);
-            }
-            animate();
-
-            // Responsive del Canvas
-            window.addEventListener('resize', () => {
-                const width = canvas.clientWidth;
-                const height = canvas.clientHeight;
-                camera.aspect = width / height;
-                camera.updateProjectionMatrix();
-                renderer.setSize(width, height);
-            });
-        });
+        }
 
         // Actualizar año automáticamente en los footers
         document.querySelectorAll('.year-field').forEach(el => {
