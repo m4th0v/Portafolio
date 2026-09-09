@@ -383,6 +383,8 @@
                 ],
                 engine: 'Blender',
                 duration: '1 mes',
+                sketchfabUrl: 'https://sketchfab.com/3d-models/bola-de-cristal-de-navidad-bda62853946d4e7a91c35b2884b9b056',
+                instagramUrl: 'https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0',
                 summary: 'Se nos pidió crear un diorama de una habitación, pero el semestre cerraría justo cerca de la época navideña, con el permiso del profesor decidí inspirarme en la época y crear esta bola de cristal navideña.',
                 overviewHtml: `
                     <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Desafíos Técnicos y Soluciones</h3>
@@ -409,6 +411,8 @@
                 ],
                 engine: 'Blender',
                 duration: '2 Semanas',
+                sketchfabUrl: 'https://sketchfab.com/3d-models/mesas-de-mimbre-8c44da59cbaa47ee988273a87ad7cf09',
+                instagramUrl: 'https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0',
                 summary: 'Juego de mesa creado en base a una referencia real, con textura PBR',
                 overviewHtml: `
                     <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Etapas del Desarrollo</h3>
@@ -429,6 +433,8 @@
                 ],
                 engine: 'Blender',
                 duration: '1 Semanas',
+                sketchfabUrl: 'https://sketchfab.com/3d-models/avion-peak-24a584e555ac4e9a8e85a195affc6ced',
+                instagramUrl: 'https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0',
                 summary: 'Prop creado para un escenario inspirado en Peak para poder implementar LOD, Occlusion Culling y bake de luces.',
                 overviewHtml: `
                     <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Características Destacadas</h3>
@@ -454,6 +460,8 @@
                 ],
                 engine: 'Blender',
                 duration: '1 Día',
+                sketchfabUrl: 'https://sketchfab.com/3d-models/iglu-72ac33f737fd4fa5b97c8284eb6f4b54',
+                instagramUrl: 'https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0',
                 summary: 'Prop creado para una animación de pingüinos.',
                 overviewHtml: `
                     <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Características Destacadas</h3>
@@ -533,18 +541,24 @@
                             </div>
                         </div>
 
+                        ${(project.instagramUrl || project.sketchfabUrl) ? `
                         <!-- Enlaces Directos del Proyecto -->
                         <div class="bg-brandDark text-white p-6 rounded-2xl border border-cotton space-y-3 shadow-sm">
                             <h4 class="font-bold font-december mb-2 text-sm text-carnation uppercase tracking-wider">Recursos y Archivos</h4>
-                            <a href="#" class="flex items-center justify-between p-3 bg-white/10 hover:bg-white/20 rounded-xl transition text-sm">
+                            ${project.instagramUrl ? `
+                            <a href="${project.instagramUrl}" target="_blank" class="flex items-center justify-between p-3 bg-white/10 hover:bg-white/20 rounded-xl transition text-sm">
                                 <span class="flex items-center gap-2.5"><i class="fab fa-instagram text-carnation"></i> Ver en Instagram</span>
                                 <i class="fas fa-external-link-alt text-xs text-cotton"></i>
                             </a>
-                            <a href="#" class="flex items-center justify-between p-3 bg-white/10 hover:bg-white/20 rounded-xl transition text-sm">
+                            ` : ''}
+                            ${project.sketchfabUrl ? `
+                            <a href="${project.sketchfabUrl}" target="_blank" class="flex items-center justify-between p-3 bg-white/10 hover:bg-white/20 rounded-xl transition text-sm">
                                 <span class="flex items-center gap-2.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-sage flex-shrink-0"><path d="M12 2L21 7V17L12 22L3 17V7L12 2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 2V12M12 12L21 7M12 12L3 7M12 12V22" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg> Modelo 3D en Sketchfab</span>
                                 <i class="fas fa-external-link-alt text-xs text-cotton"></i>
                             </a>
+                            ` : ''}
                         </div>
+                        ` : ''}
                     </div>
 
                     <!-- Cuerpo Extenso de la Página -->
