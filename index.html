@@ -398,47 +398,24 @@
                     </div>
                 `
             },
-            'cyber-warrior-3d': {
-                title: 'Cyber Warrior - Asset 3D Game Ready',
-                subtitle: 'Entrega Académica | Asignatura: Escultura Digital y Retopología',
-                category: 'Personaje 3D / Asset para Videojuegos',
-                bannerImage: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&q=80&w=1200',
+            'Juego-de-terraza-de-mimbre': {
+                title: 'Juego de terraza de mimbre',
+                subtitle: 'Entrega Académica | Modelado en base a referencia',
+                category: 'Props',
+                bannerImage: 'RENDER_MIMBRE_N1.png',
                 gallery: [
-                    'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&q=80&w=800',
-                    'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800',
-                    'https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&q=80&w=800'
+                    'RENDER_MIMBRE_N2.png',
+                    'RENDER_MIMBRE_N3.png',
                 ],
-                engine: 'Renderizado en Marmoset Toolbag 4 / UE5',
-                language: 'ZBrush, Blender & Substance Painter',
-                role: '3D Character Artist',
-                duration: '6 Semanas',
-                summary: 'Personaje completo diseñado bajo los estándares actuales de la industria del videojuego AAA. Desde el concepto inicial y escultura digital High-Poly en ZBrush hasta el desenvuelto UV y mapas PBR.',
+                engine: 'Blender',
+                duration: '2 semanas',
+                summary: 'Juego de mesa creado en base a una referencia real, con textura PBR',
                 overviewHtml: `
-                    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Flujo de Trabajo (Pipeline Completo)</h3>
-                    <p class="text-brandDark/80 leading-relaxed mb-6">
-                        El proyecto abarcó todo el ciclo de creación de un activo tridimensional optimizado para renderizado en tiempo real sin perder los detalles finos de la escultura original.
-                    </p>
-
-                    <!-- Ficha de Especificaciones 3D -->
-                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
-                        <div class="p-4 bg-cotton/30 border border-cotton rounded-xl">
-                            <span class="text-xs uppercase font-semibold text-peony">Polycount / Triángulos</span>
-                            <p class="text-2xl font-bold text-brandDark">18,400 Tris</p>
-                            <p class="text-xs text-brandDark/60">Optimizados para articulaciones</p>
-                        </div>
-                        <div class="p-4 bg-sage/30 border border-sage rounded-xl">
-                            <span class="text-xs uppercase font-semibold text-teal-dark">Mapas de Textura PBR</span>
-                            <p class="text-2xl font-bold text-brandDark">Set 4K Metal/Rough</p>
-                            <p class="text-xs text-brandDark/60">Albedo, Normal, Roughness, Metallic, AO</p>
-                        </div>
-                    </div>
-
                     <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Etapas del Desarrollo</h3>
                     <ol class="list-decimal list-inside space-y-3 text-brandDark/80 mb-8">
-                        <li><strong>High Poly Sculpting:</strong> Modelado orgánico y armadura en ZBrush utilizando herramientas DynaMesh y ZRemesher.</li>
-                        <li><strong>Retopología Manual:</strong> Creación del Low-Poly en Blender garantizando un flujo de bucles (edge loops) óptimo para animación de deformación.</li>
-                        <li><strong>Unwrapping & Texel Density:</strong> Empaquetado eficiente de mapas UV maximizando la resolución textil del activo.</li>
-                        <li><strong>Baking & Texturizado:</strong> Transferencia de detalles de alto poligonaje a mapas de normales en Substance Painter con materiales inteligentes personalizados.</li>
+                        <li><strong>Seleccion de referencia a modelar: </strong> Se nos dio 3 referencias a elegir para modelar, inlcuyendo tipo de cojines y tazas.</li>
+                        <li><strong>Modelado: </strong> Se modelaron las referencias, incluyendo la curvatura de cada modelo.</li>
+                        <li><strong>Texturizado:</strong> Se tuvo que sacar texturas PBR de internet para poder crear el mimbre.</li>
                     </ol>
                 `
             },
@@ -494,6 +471,7 @@
             }
 
             breadcrumbTitle.textContent = project.title;
+            window.activeGallery = project.gallery;
 
             detailContainer.innerHTML = `
                 <!-- Cabecera del Proyecto -->
@@ -527,14 +505,18 @@
                                 <span class="text-xs text-brandDark/60 uppercase font-semibold">Motor / Entorno</span>
                                 <p class="text-sm font-medium text-brandDark">${project.engine}</p>
                             </div>
+                            ${project.language ? `
                             <div>
                                 <span class="text-xs text-brandDark/60 uppercase font-semibold">Software / Lenguaje</span>
                                 <p class="text-sm font-medium text-brandDark">${project.language}</p>
                             </div>
+                            ` : ''}
+                            ${project.role ? `
                             <div>
                                 <span class="text-xs text-brandDark/60 uppercase font-semibold">Rol en el Proyecto</span>
                                 <p class="text-sm font-medium text-brandDark">${project.role}</p>
                             </div>
+                            ` : ''}
                             <div>
                                 <span class="text-xs text-brandDark/60 uppercase font-semibold">Tiempo de Desarrollo</span>
                                 <p class="text-sm font-medium text-brandDark">${project.duration}</p>
@@ -568,8 +550,8 @@
                         <div>
                             <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Galería de Capturas & Renders</h3>
                             <div class="grid sm:grid-cols-3 gap-4">
-                                ${project.gallery.map(imgUrl => `
-                                    <div class="h-40 rounded-xl overflow-hidden border border-cotton shadow-sm group cursor-pointer relative" onclick="openLightbox('${imgUrl}')">
+                                ${project.gallery.map((imgUrl, idx) => `
+                                    <div class="h-40 rounded-xl overflow-hidden border border-cotton shadow-sm group cursor-pointer relative" onclick="openGalleryLightbox(${idx})">
                                         <img src="${imgUrl}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
                                         <div class="absolute inset-0 bg-brandDark/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                                             <i class="fas fa-search-plus text-white text-lg"></i>
@@ -592,15 +574,57 @@
                 <button onclick="closeLightbox()" class="absolute -top-12 right-0 sm:-right-2 text-cotton hover:text-peony text-xs font-semibold tracking-wider uppercase transition flex items-center gap-2 bg-brandDark/70 px-3.5 py-1.5 rounded-xl border border-cotton/30 backdrop-blur shadow-lg">
                     <i class="fas fa-times"></i> Cerrar [ESC]
                 </button>
+                <button id="lightbox-prev" onclick="showPrevImage(event)" class="absolute left-1 sm:-left-14 top-1/2 -translate-y-1/2 text-cotton hover:text-peony text-lg transition bg-brandDark/70 w-10 h-10 rounded-full border border-cotton/30 backdrop-blur shadow-lg flex items-center justify-center">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
                 <img id="lightbox-img" src="" class="max-h-[82vh] max-w-full rounded-2xl object-contain shadow-2xl border-2 border-cotton/40 bg-brandDark/90">
+                <button id="lightbox-next" onclick="showNextImage(event)" class="absolute right-1 sm:-right-14 top-1/2 -translate-y-1/2 text-cotton hover:text-peony text-lg transition bg-brandDark/70 w-10 h-10 rounded-full border border-cotton/30 backdrop-blur shadow-lg flex items-center justify-center">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         `;
         document.body.appendChild(lightboxModal);
 
+        let activeGalleryImages = [];
+        let activeImageIndex = 0;
+
+        function updateArrowVisibility() {
+            const showArrows = activeGalleryImages.length > 1;
+            document.getElementById('lightbox-prev').style.display = showArrows ? 'flex' : 'none';
+            document.getElementById('lightbox-next').style.display = showArrows ? 'flex' : 'none';
+        }
+
+        function openGalleryLightbox(index) {
+            activeGalleryImages = window.activeGallery || [];
+            activeImageIndex = index;
+            openLightbox(activeGalleryImages[activeImageIndex]);
+            updateArrowVisibility();
+        }
+
+        function showNextImage(e) {
+            if (e) e.stopPropagation();
+            if (activeGalleryImages.length < 2) return;
+            activeImageIndex = (activeImageIndex + 1) % activeGalleryImages.length;
+            document.getElementById('lightbox-img').src = activeGalleryImages[activeImageIndex];
+        }
+
+        function showPrevImage(e) {
+            if (e) e.stopPropagation();
+            if (activeGalleryImages.length < 2) return;
+            activeImageIndex = (activeImageIndex - 1 + activeGalleryImages.length) % activeGalleryImages.length;
+            document.getElementById('lightbox-img').src = activeGalleryImages[activeImageIndex];
+        }
+
         function openLightbox(imgSrc) {
             const img = document.getElementById('lightbox-img');
             const container = document.getElementById('lightbox-container');
-            
+
+            // Si se abre una sola imagen suelta (ej. banner), se desactiva la navegación
+            if (!activeGalleryImages.includes(imgSrc)) {
+                activeGalleryImages = [];
+            }
+            updateArrowVisibility();
+
             img.src = imgSrc;
             lightboxModal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -625,9 +649,12 @@
             }, 300);
         }
 
-        // Cerrar con tecla ESC
+        // Cerrar con tecla ESC y navegar la galería con las flechas del teclado
         window.addEventListener('keydown', (e) => {
+            if (lightboxModal.classList.contains('hidden')) return;
             if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') showNextImage();
+            if (e.key === 'ArrowLeft') showPrevImage();
         });
 
         // Cerrar haciendo clic fuera de la imagen
