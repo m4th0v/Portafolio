@@ -120,7 +120,7 @@
     <!-- ========================================== -->
     <main id="home-view" class="transition-opacity duration-300">
         
-        <section id="inicio" class="min-h-screen flex items-center pt-28 pb-12 lg:py-24 relative overflow-hidden">
+        <section id="inicio" class="min-h-screen flex items-center pt-28 pb-12 lg:py-24 relative overflow-hidden scroll-mt-20">
             <!-- Fondo de formas difuminadas de la paleta -->
             <div class="absolute top-20 left-10 w-72 h-72 bg-cotton/40 rounded-full filter blur-3xl -z-10"></div>
             <div class="absolute bottom-10 right-10 w-80 h-80 bg-sage/30 rounded-full filter blur-3xl -z-10"></div>
@@ -168,7 +168,7 @@
             </div>
         </section>
 
-        <section id="sobre-mi" class="py-20 bg-white/80 border-t border-cotton/50">
+        <section id="sobre-mi" class="py-20 bg-white/80 border-t border-cotton/50 scroll-mt-20">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <h2 class="text-3xl sm:text-4xl font-bold font-december tracking-wide text-brandDark">Sobre Mí</h2>
@@ -205,7 +205,7 @@
             </div>
         </section>
 
-        <section id="proyectos" class="py-20 bg-white/80 border-t border-cotton/50">
+        <section id="proyectos" class="py-20 bg-white/80 border-t border-cotton/50 scroll-mt-20">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <h2 class="text-3xl sm:text-4xl font-bold font-december tracking-wide text-brandDark">Proyectos de Videojuegos y 3D</h2>
@@ -282,10 +282,10 @@
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-carnation-dark transition cursor-pointer" onclick="navigateTo('#proyecto/Fanmade-avion-peak')">
-                                Fanmade avion videojuego Peak
+                                Fanmade avión videojuego Peak
                             </h3>
                             <p class="text-brandDark/70 text-sm mb-4 line-clamp-2">
-                                Fanmade del avion, creado para un proyecto grupal.
+                                Fanmade del avión, creado para un proyecto grupal.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-5">
                                 <span class="text-xs bg-cotton/30 border border-cotton/60 px-2.5 py-1 rounded-md text-brandDark">Blender</span>
@@ -300,23 +300,23 @@
 
                     <!-- Tarjeta Proyecto 4 -->
                     <div class="project-card group bg-white rounded-2xl overflow-hidden border border-cotton/70 shadow-sm hover:shadow-xl hover:border-teal/50 transition-all duration-300" data-category="modelado">
-                        <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo('#proyecto/cyber-warrior-3d')">
-                            <img src="RENDER_IGLU_1.png" alt="Personaje 3D Game Ready" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo('#proyecto/Iglu')">
+                            <img src="RENDER_IGLU_1.png" alt="Prop 3D de Iglu" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
                             <span class="absolute top-3 right-3 bg-teal text-white text-xs font-semibold px-2.5 py-1 rounded-md shadow">Props</span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-teal transition cursor-pointer" onclick="navigateTo('#proyecto/cyber-warrior-3d')">
+                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-teal transition cursor-pointer" onclick="navigateTo('#proyecto/Iglu')">
                                 Iglu
                             </h3>
                             <p class="text-brandDark/70 text-sm mb-4 line-clamp-2">
-                                Modelo de Iglu creado para un video en Unreal Engine.
+                                Prop creado para una animación de pingüinos.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-5">
                                 <span class="text-xs bg-sage/30 border border-sage/60 px-2.5 py-1 rounded-md text-brandDark">Blender</span>
                                 <span class="text-xs bg-sage/30 border border-sage/60 px-2.5 py-1 rounded-md text-brandDark">Props</span>
                                 <span class="text-xs bg-sage/30 border border-sage/60 px-2.5 py-1 rounded-md text-brandDark">PBR</span>
                             </div>
-                            <a href="#proyecto/cyber-warrior-3d" onclick="navigateTo('#proyecto/cyber-warrior-3d')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-teal to-sage-dark hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
+                            <a href="#proyecto/Iglu" onclick="navigateTo('#proyecto/Iglu')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-teal to-sage-dark hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
                                 <span>Ver Proyecto</span>
                                 <i class="fas fa-arrow-right text-xs"></i>
                             </a>
@@ -383,17 +383,17 @@
                 ],
                 engine: 'Blender',
                 duration: '1 mes',
-                summary: 'Se nos pidio crear un diorama de una habitacion, pero el semestre cerraria justo cerca de la epoca navideña, con el permiso del profesor decidi insiprarme en la epoca y crear esta bola de cristal navideña.',
+                summary: 'Se nos pidió crear un diorama de una habitación, pero el semestre cerraría justo cerca de la época navideña, con el permiso del profesor decidí inspirarme en la época y crear esta bola de cristal navideña.',
                 overviewHtml: `
                     <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Desafíos Técnicos y Soluciones</h3>
                     <div class="space-y-4 mb-8">
                         <div class="p-4 bg-cotton/20 rounded-xl border border-cotton/60">
                             <h4 class="font-semibold text-peony mb-1">1. Implementación Geometry Nodes</h4>
-                            <p class="text-sm text-brandDark/80">La entrega inicial fue echa con varios modelos diferentes para cada regalo y adorno. El semestre siguiente se nos enseño la herramienta de geometry nodes para optimizar los modelos, estos geometry nodes ya estan aplicados actualmente en el modelo.</p>
+                            <p class="text-sm text-brandDark/80">La entrega inicial fue hecha con varios modelos diferentes para cada regalo y adorno. El semestre siguiente se nos enseñó la herramienta de geometry nodes para optimizar los modelos, estos geometry nodes ya están aplicados actualmente en el modelo.</p>
                         </div>
                         <div class="p-4 bg-cotton/20 rounded-xl border border-cotton/60">
                             <h4 class="font-semibold text-peony mb-1">2. Bake de Texturas</h4>
-                            <p class="text-sm text-brandDark/80">Para esta entrega se nos pidio dividir el diorama en grupos de objetos pequeños, medianos, grandes y complejos. Mi diorama al tener muchos objetos pequeños hacia que las UV fueran pequeñas haciendo que las texturas quedaran en menor calidad. Esto se soluciono con la implementacion de los Geometry Nodes.</p>
+                            <p class="text-sm text-brandDark/80">Para esta entrega se nos pidió dividir el diorama en grupos de objetos pequeños, medianos, grandes y complejos. Mi diorama al tener muchos objetos pequeños hacía que las UV fueran pequeñas haciendo que las texturas quedaran en menor calidad. Esto se solucionó con la implementación de los Geometry Nodes.</p>
                         </div>
                     </div>
                 `
@@ -413,14 +413,14 @@
                 overviewHtml: `
                     <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Etapas del Desarrollo</h3>
                     <ol class="list-decimal list-inside space-y-3 text-brandDark/80 mb-8">
-                        <li><strong>Seleccion de referencia a modelar: </strong> Se nos dio 3 referencias a elegir para modelar, inlcuyendo tipo de cojines y tazas.</li>
+                        <li><strong>Selección de referencia a modelar: </strong> Se nos dio 3 referencias a elegir para modelar, incluyendo tipo de cojines y tazas.</li>
                         <li><strong>Modelado: </strong> Se modelaron las referencias, incluyendo la curvatura de cada modelo.</li>
                         <li><strong>Texturizado:</strong> Se tuvo que sacar texturas PBR de internet para poder crear el mimbre.</li>
                     </ol>
                 `
             },
             'Fanmade-avion-peak': {
-                title: 'Fanmade avion videojuego peak',
+                title: 'Fanmade avión videojuego Peak',
                 subtitle: 'Modelado de prop para probar level of detail (LOD) en Unity',
                 category: 'Props',
                 bannerImage: 'RENDER_AVION_N1.png',
@@ -429,18 +429,37 @@
                 ],
                 engine: 'Blender',
                 duration: '1 Semanas',
-                summary: 'Prop creado para un escenario inspirado en peak para poder implementar LOD, Oclussion Culling y bake de luces.',
+                summary: 'Prop creado para un escenario inspirado en Peak para poder implementar LOD, Occlusion Culling y bake de luces.',
                 overviewHtml: `
                     <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Características Destacadas</h3>
                     <div class="grid md:grid-cols-2 gap-4 mb-8">
                         <div class="p-4 bg-sage/20 rounded-xl border border-sage/60">
                             <h4 class="font-semibold text-teal-dark mb-1">Sticker</h4>
-                            <p class="text-sm text-brandDark/80">El logo del avion fue echo con un sticker de Blender.</p>
+                            <p class="text-sm text-brandDark/80">El logo del avión fue hecho con un sticker de Blender.</p>
                         </div>
                         <div class="p-4 bg-sage/20 rounded-xl border border-sage/60">
                             <h4 class="font-semibold text-teal-dark mb-1">Stencil</h4>
                             <p class="text-sm text-brandDark/80">Las letras fueron puestas con un stencil.</p>
                         </div>
+                    </div>
+                `
+            },
+            'Iglu': {
+                title: 'Iglu',
+                subtitle: 'Prop creado para una animación de pingüinos.',
+                category: 'Props',
+                bannerImage: 'RENDER_IGLU_1.png',
+                gallery: [
+                    'RENDER_IGLU_1.png'
+                ],
+                engine: 'Blender',
+                duration: '1 Día',
+                summary: 'Prop creado para una animación de pingüinos.',
+                overviewHtml: `
+                    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Características Destacadas</h3>
+                    <div class="p-4 bg-sage/20 rounded-xl border border-sage/60 mb-8">
+                        <h4 class="font-semibold text-teal-dark mb-1">Modificadores de Array y Textura PBR</h4>
+                        <p class="text-sm text-brandDark/80">El iglú fue creado utilizando modificadores de array para generar los bloques de hielo, junto con texturizado PBR.</p>
                     </div>
                 `
             }
@@ -680,12 +699,29 @@
                 mainNavLinks.classList.remove('hidden');
                 mainNavLinks.classList.add('hidden', 'md:flex');
                 backNav.classList.add('hidden');
+
+                // Desplazamiento suave a la sección correspondiente (Inicio, Sobre Mí o Proyectos).
+                // Se usa requestAnimationFrame porque la sección recién se vuelve visible arriba,
+                // y el navegador necesita al menos un frame para calcular su posición real.
+                const targetId = hash === '#' ? 'inicio' : hash.replace('#', '');
+                requestAnimationFrame(() => {
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) {
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
             }
         }
 
         function navigateTo(hash) {
+            const isSameHash = window.location.hash === hash;
             window.location.hash = hash;
             closeMobileMenu();
+            // Si el hash no cambia, el navegador no dispara 'hashchange', así que
+            // forzamos el enrutamiento manualmente para que el scroll siempre ocurra.
+            if (isSameHash) {
+                handleRouting();
+            }
         }
 
         function closeMobileMenu() {
