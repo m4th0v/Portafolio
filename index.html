@@ -232,7 +232,7 @@
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-peony transition cursor-pointer" onclick="navigateTo('#proyecto/echoes-of-the-void')">
-                                Bola de Cristal navidad
+                                Bola de cristal navidad
                             </h3>
                             <p class="text-brandDark/70 text-sm mb-4 line-clamp-2">
                                 Diorama de una bola de cristal de navidad con Geometry Nodes.
@@ -298,7 +298,7 @@
                         </div>
                     </div>
 
-                    <!-- Tarjeta Proyecto 2 -->
+                    <!-- Tarjeta Proyecto 4 -->
                     <div class="project-card group bg-white rounded-2xl overflow-hidden border border-cotton/70 shadow-sm hover:shadow-xl hover:border-teal/50 transition-all duration-300" data-category="modelado">
                         <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo('#proyecto/cyber-warrior-3d')">
                             <img src="RENDER_IGLU_1.png" alt="Personaje 3D Game Ready" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
@@ -330,7 +330,7 @@
         <!-- Footer Main -->
         <footer class="bg-cotton/20 py-8 border-t border-cotton/50 text-center text-sm text-brandDark/70">
             <div class="max-w-6xl mx-auto px-4 space-y-2">
-                <p>© <span class="year-field"></span> Francisca. Portafolio de Modelado 3D & Desarrollo de Videojuegos.</p>
+                <p>© <span class="year-field"></span> Francisca Correa.</p>
             </div>
         </footer>
     </main>
@@ -372,46 +372,30 @@
     <!-- Script de Enrutamiento Dinámico y Lógica -->
     <script>
         const projectsData = {
-            'echoes-of-the-void': {
-                title: 'Echoes of the Void - Demo UE5',
-                subtitle: 'Proyecto Integrador Final | Asignatura: Motores Gráficos III',
-                category: 'Demo Jugable de Videojuego',
-                bannerImage: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200',
+            'Bola-de-cristal-navidad': {
+                title: 'Bola de cristal navidad',
+                subtitle: 'Diorama de navidad con geometry nodes.',
+                category: 'Diorama',
+                bannerImage: 'RENDER_BOLA_DE_CRISTAL.png',
                 gallery: [
-                    'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800',
-                    'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=800',
-                    'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&q=80&w=800'
+                    'RENDER_CLOSE_UP_ARBOL.png',
+                    'RENDER_CLOSE_UP_ARBOL_2.png',
                 ],
-                engine: 'Unreal Engine 5.3 (Lumen & Nanite)',
-                language: 'C++ & Unreal Blueprints',
-                role: '3D Modeler, Game Designer & Lead Programmer',
-                duration: '4 Meses (Semestre Académico)',
-                summary: 'Echoes of the Void es una demo jugable en tercera persona que explora mecánicas de combate ágil en un mundo de ciencia ficción en ruinas. Desarrollado como proyecto final de la materia de Motores de Juego.',
-                overviewHtml: `
-                    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Resumen del Proyecto</h3>
-                    <p class="text-brandDark/80 leading-relaxed mb-6">
-                        El objetivo académico consistió en diseñar un prototipo funcional con arquitectura de código escalable en C++, integrando un sistema de combate de combo fluido y comportamientos de IA enemiga programados con <strong>Behavior Trees</strong> y <strong>Blackboards</strong> en Unreal Engine 5.
-                    </p>
-
+                engine: 'Blender',
+                duration: '1 mes',
+                summary: 'Se nos pidio crear un diorama de una habitacion, pero el semestre cerraria justo cerca de la epoca navideña, con el permiso del profesor decidi insiprarme en la epoca y crear esta bola de cristal navideña.',
+                
                     <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Desafíos Técnicos y Soluciones</h3>
                     <div class="space-y-4 mb-8">
                         <div class="p-4 bg-cotton/20 rounded-xl border border-cotton/60">
-                            <h4 class="font-semibold text-peony mb-1">1. Optimización de Iluminación con Lumen</h4>
-                            <p class="text-sm text-brandDark/80">Ajuste fino de volúmenes post-procesamiento e iluminación global en tiempo real para mantener una tasa constante de 60 FPS en resolución 1080p.</p>
+                            <h4 class="font-semibold text-peony mb-1">1. Implementación Geometry Nodes</h4>
+                            <p class="text-sm text-brandDark/80">La entrega inicial fue echa con varios modelos diferentes para cada regalo y adorno. El semestre siguiente se nos enseño la herramienta de geometry nodes para optimizar los modelos, estos geometry nodes ya estan aplicados actualmente en el modelo.</p>
                         </div>
                         <div class="p-4 bg-cotton/20 rounded-xl border border-cotton/60">
-                            <h4 class="font-semibold text-peony mb-1">2. Sistema de Partículas Niagara</h4>
-                            <p class="text-sm text-brandDark/80">Creación de efectos visuales (VFX) para impactos de armas de energía, habilidades especiales del personaje y ráfagas de polvo dinámicas.</p>
+                            <h4 class="font-semibold text-peony mb-1">2. Bake de Texturas</h4>
+                            <p class="text-sm text-brandDark/80">Para esta entrega se nos pidio dividir el diorama en grupos de objetos pequeños, medianos, grandes y complejos. Mi diorama al tener muchos objetos pequeños hacia que las UV fueran pequeñas haciendo que las texturas quedaran en menor calidad. Esto se soluciono con la implementacion de los Geometry Nodes.</p>
                         </div>
                     </div>
-
-                    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark">Pipeline de Código y Blueprints</h3>
-                    <ul class="list-disc list-inside space-y-2 text-brandDark/80 mb-8">
-                        <li><strong>C++ Base Class:</strong> Lógica principal de salud, movimiento en tercera persona y daño.</li>
-                        <li><strong>Blueprints Derivados:</strong> Ajuste de parámetros cosméticos, animaciones de ataque e iluminación.</li>
-                        <li><strong>Anim Notifies:</strong> Control preciso de ventanas de ataque para combos e invulnerabilidad en esquives.</li>
-                    </ul>
-                `
             },
             'cyber-warrior-3d': {
                 title: 'Cyber Warrior - Asset 3D Game Ready',
