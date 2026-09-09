@@ -80,20 +80,20 @@
         <div class="w-full px-4 sm:px-6 lg:px-12 py-3.5">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
-                <a href="#" onclick="navigateTo('#')" class="text-base sm:text-lg font-bold font-december bg-gradient-to-r from-peony via-carnation to-teal bg-clip-text text-transparent flex items-center gap-2 group tracking-wide">
+                <a href="#" onclick="navigateTo(event, '#')" class="text-base sm:text-lg font-bold font-december bg-gradient-to-r from-peony via-carnation to-teal bg-clip-text text-transparent flex items-center gap-2 group tracking-wide">
                     <span>Francisca Correa</span>
                 </a>
 
                 <!-- Enlaces de Navegación Principal (Escritorio) -->
                 <div id="main-nav-links" class="hidden md:flex items-center space-x-7">
-                    <a href="#inicio" onclick="navigateTo('#inicio')" class="text-sm font-semibold text-brandDark/80 hover:text-peony transition">Inicio</a>
-                    <a href="#sobre-mi" onclick="navigateTo('#sobre-mi')" class="text-sm font-semibold text-brandDark/80 hover:text-peony transition">Sobre Mí</a>
-                    <a href="#proyectos" onclick="navigateTo('#proyectos')" class="text-sm font-semibold text-brandDark/80 hover:text-peony transition">Proyectos</a>
+                    <a href="#inicio" onclick="navigateTo(event, '#inicio')" class="text-sm font-semibold text-brandDark/80 hover:text-peony transition">Inicio</a>
+                    <a href="#sobre-mi" onclick="navigateTo(event, '#sobre-mi')" class="text-sm font-semibold text-brandDark/80 hover:text-peony transition">Sobre Mí</a>
+                    <a href="#proyectos" onclick="navigateTo(event, '#proyectos')" class="text-sm font-semibold text-brandDark/80 hover:text-peony transition">Proyectos</a>
                 </div>
 
                 <!-- Botón Volver para cuando estás en una página de proyecto -->
                 <div id="back-nav-link" class="hidden">
-                    <a href="#" onclick="navigateTo('#proyectos')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-cotton/40 text-brandDark hover:bg-cotton/70 transition border border-cotton/80">
+                    <a href="#" onclick="navigateTo(event, '#proyectos')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-cotton/40 text-brandDark hover:bg-cotton/70 transition border border-cotton/80">
                         <i class="fas fa-arrow-left"></i> Volver a Proyectos
                     </a>
                 </div>
@@ -108,9 +108,9 @@
 
             <!-- Desplegable Móvil -->
             <div id="mobile-menu" class="hidden md:hidden pt-3 mt-2 border-t border-cotton/40 space-y-2">
-                <a href="#inicio" onclick="navigateTo('#inicio'); closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-brandDark hover:bg-cotton/30">Inicio</a>
-                <a href="#sobre-mi" onclick="navigateTo('#sobre-mi'); closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-brandDark hover:bg-cotton/30">Sobre Mí</a>
-                <a href="#proyectos" onclick="navigateTo('#proyectos'); closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-brandDark hover:bg-cotton/30">Proyectos</a>
+                <a href="#inicio" onclick="navigateTo(event, '#inicio'); closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-brandDark hover:bg-cotton/30">Inicio</a>
+                <a href="#sobre-mi" onclick="navigateTo(event, '#sobre-mi'); closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-brandDark hover:bg-cotton/30">Sobre Mí</a>
+                <a href="#proyectos" onclick="navigateTo(event, '#proyectos'); closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-brandDark hover:bg-cotton/30">Proyectos</a>
             </div>
         </div>
     </header>
@@ -139,11 +139,11 @@
                             Estudiante universitaria enfocada en <strong>modelado 3D, texturizado base Shaders en Blender</strong> y desarrollo de videojuegos en Unity.
                         </p>
                         <div class="flex flex-wrap gap-4 pt-2">
-                            <a href="#proyectos" onclick="navigateTo('#proyectos')" class="px-6 py-3.5 rounded-xl bg-peony hover:bg-peony-dark text-white font-semibold transition shadow-lg shadow-peony/25 flex items-center space-x-2.5">
+                            <a href="#proyectos" onclick="navigateTo(event, '#proyectos')" class="px-6 py-3.5 rounded-xl bg-peony hover:bg-peony-dark text-white font-semibold transition shadow-lg shadow-peony/25 flex items-center space-x-2.5">
                                 <span>Ver Proyectos</span>
                                 <i class="fas fa-arrow-right text-sm"></i>
                             </a>
-                            <a href="#sobre-mi" onclick="navigateTo('#sobre-mi')" class="px-6 py-3.5 rounded-xl border border-cotton bg-white/70 hover:bg-cotton/30 text-brandDark font-semibold transition flex items-center space-x-2.5">
+                            <a href="#sobre-mi" onclick="navigateTo(event, '#sobre-mi')" class="px-6 py-3.5 rounded-xl border border-cotton bg-white/70 hover:bg-cotton/30 text-brandDark font-semibold transition flex items-center space-x-2.5">
                                 <span>Sobre Mí</span>
                                 <i class="fas fa-user text-sm text-teal"></i>
                             </a>
@@ -226,12 +226,12 @@
 
                     <!-- Tarjeta Proyecto 1 -->
                     <div class="project-card group bg-white rounded-2xl overflow-hidden border border-cotton/70 shadow-sm hover:shadow-xl hover:border-peony/50 transition-all duration-300" data-category="juegos">
-                        <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo('#proyecto/Bola-de-cristal-navidad')">
+                        <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo(event, '#proyecto/Bola-de-cristal-navidad')">
                             <img src="RENDER_BOLA_DE_CRISTAL.png" alt="Demo Videojuego 3D en UE5" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
                             <span class="absolute top-3 right-3 bg-peony text-white text-xs font-semibold px-2.5 py-1 rounded-md shadow">Diorama</span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-peony transition cursor-pointer" onclick="navigateTo('#proyecto/Bola-de-cristal-navidad')">
+                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-peony transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Bola-de-cristal-navidad')">
                                 Bola de cristal navidad
                             </h3>
                             <p class="text-brandDark/70 text-sm mb-4 line-clamp-2">
@@ -242,7 +242,7 @@
                                 <span class="text-xs bg-cotton/30 border border-cotton/60 px-2.5 py-1 rounded-md text-brandDark">Geometry Nodes</span>
                                 <span class="text-xs bg-cotton/30 border border-cotton/60 px-2.5 py-1 rounded-md text-brandDark">Diorama</span>
                             </div>
-                            <a href="#proyecto/Bola-de-cristal-navidad" onclick="navigateTo('#proyecto/Bola-de-cristal-navidad')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-peony to-carnation hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
+                            <a href="#proyecto/Bola-de-cristal-navidad" onclick="navigateTo(event, '#proyecto/Bola-de-cristal-navidad')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-peony to-carnation hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
                                 <span>Ver Proyecto</span>
                                 <i class="fas fa-arrow-right text-xs"></i>
                             </a>
@@ -251,12 +251,12 @@
 
                     <!-- Tarjeta Proyecto 2 -->
                     <div class="project-card group bg-white rounded-2xl overflow-hidden border border-cotton/70 shadow-sm hover:shadow-xl hover:border-teal/50 transition-all duration-300" data-category="modelado">
-                        <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo('#proyecto/Juego-de-terraza-de-mimbre')">
+                        <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo(event, '#proyecto/Juego-de-terraza-de-mimbre')">
                             <img src="RENDER_MIMBRE_N1.png" alt="Personaje 3D Game Ready" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
                             <span class="absolute top-3 right-3 bg-teal text-white text-xs font-semibold px-2.5 py-1 rounded-md shadow">Props</span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-teal transition cursor-pointer" onclick="navigateTo('#proyecto/Juego-de-terraza-de-mimbre')">
+                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-teal transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Juego-de-terraza-de-mimbre')">
                                 Juego de terraza de mimbre
                             </h3>
                             <p class="text-brandDark/70 text-sm mb-4 line-clamp-2">
@@ -267,7 +267,7 @@
                                 <span class="text-xs bg-sage/30 border border-sage/60 px-2.5 py-1 rounded-md text-brandDark">Props</span>
                                 <span class="text-xs bg-sage/30 border border-sage/60 px-2.5 py-1 rounded-md text-brandDark">PBR</span>
                             </div>
-                            <a href="#proyecto/Juego-de-terraza-de-mimbre" onclick="navigateTo('#proyecto/Juego-de-terraza-de-mimbre')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-teal to-sage-dark hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
+                            <a href="#proyecto/Juego-de-terraza-de-mimbre" onclick="navigateTo(event, '#proyecto/Juego-de-terraza-de-mimbre')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-teal to-sage-dark hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
                                 <span>Ver Proyecto</span>
                                 <i class="fas fa-arrow-right text-xs"></i>
                             </a>
@@ -276,12 +276,12 @@
 
                     <!-- Tarjeta Proyecto 3 -->
                     <div class="project-card group bg-white rounded-2xl overflow-hidden border border-cotton/70 shadow-sm hover:shadow-xl hover:border-carnation/50 transition-all duration-300" data-category="entornos">
-                        <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo('#proyecto/Fanmade-avion-peak')">
+                        <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo(event, '#proyecto/Fanmade-avion-peak')">
                             <img src="RENDER_AVION_N1.png" alt="Entorno Sci-Fi Modular 3D" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
                             <span class="absolute top-3 right-3 bg-carnation text-white text-xs font-semibold px-2.5 py-1 rounded-md shadow">Props</span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-carnation-dark transition cursor-pointer" onclick="navigateTo('#proyecto/Fanmade-avion-peak')">
+                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-carnation-dark transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Fanmade-avion-peak')">
                                 Fanmade avión videojuego Peak
                             </h3>
                             <p class="text-brandDark/70 text-sm mb-4 line-clamp-2">
@@ -291,7 +291,7 @@
                                 <span class="text-xs bg-cotton/30 border border-cotton/60 px-2.5 py-1 rounded-md text-brandDark">Blender</span>
                                 <span class="text-xs bg-cotton/30 border border-cotton/60 px-2.5 py-1 rounded-md text-brandDark">Props</span>
                             </div>
-                            <a href="#proyecto/Fanmade-avion-peak" onclick="navigateTo('#proyecto/Fanmade-avion-peak')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-carnation-dark to-peony hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
+                            <a href="#proyecto/Fanmade-avion-peak" onclick="navigateTo(event, '#proyecto/Fanmade-avion-peak')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-carnation-dark to-peony hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
                                 <span>Ver Proyecto</span>
                                 <i class="fas fa-arrow-right text-xs"></i>
                             </a>
@@ -300,12 +300,12 @@
 
                     <!-- Tarjeta Proyecto 4 -->
                     <div class="project-card group bg-white rounded-2xl overflow-hidden border border-cotton/70 shadow-sm hover:shadow-xl hover:border-teal/50 transition-all duration-300" data-category="modelado">
-                        <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo('#proyecto/Iglu')">
+                        <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo(event, '#proyecto/Iglu')">
                             <img src="RENDER_IGLU_1.png" alt="Prop 3D de Iglu" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
                             <span class="absolute top-3 right-3 bg-teal text-white text-xs font-semibold px-2.5 py-1 rounded-md shadow">Props</span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-teal transition cursor-pointer" onclick="navigateTo('#proyecto/Iglu')">
+                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark group-hover:text-teal transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Iglu')">
                                 Iglu
                             </h3>
                             <p class="text-brandDark/70 text-sm mb-4 line-clamp-2">
@@ -316,7 +316,7 @@
                                 <span class="text-xs bg-sage/30 border border-sage/60 px-2.5 py-1 rounded-md text-brandDark">Props</span>
                                 <span class="text-xs bg-sage/30 border border-sage/60 px-2.5 py-1 rounded-md text-brandDark">PBR</span>
                             </div>
-                            <a href="#proyecto/Iglu" onclick="navigateTo('#proyecto/Iglu')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-teal to-sage-dark hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
+                            <a href="#proyecto/Iglu" onclick="navigateTo(event, '#proyecto/Iglu')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-teal to-sage-dark hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
                                 <span>Ver Proyecto</span>
                                 <i class="fas fa-arrow-right text-xs"></i>
                             </a>
@@ -344,11 +344,11 @@
             <!-- Migas de pan & Botón Volver Integrado -->
             <div class="flex flex-wrap items-center justify-between gap-4 text-sm text-brandDark/60 mb-8 border-b border-cotton/50 pb-4">
                 <div class="flex items-center gap-2">
-                    <a href="#" onclick="navigateTo('#proyectos')" class="hover:text-peony transition flex items-center gap-1.5">
+                    <a href="#" onclick="navigateTo(event, '#proyectos')" class="hover:text-peony transition flex items-center gap-1.5">
                         <i class="fas fa-home text-xs"></i> Inicio
                     </a>
                     <span>/</span>
-                    <a href="#" onclick="navigateTo('#proyectos')" class="hover:text-peony transition">Proyectos</a>
+                    <a href="#" onclick="navigateTo(event, '#proyectos')" class="hover:text-peony transition">Proyectos</a>
                     <span>/</span>
                     <span id="detail-breadcrumb-title" class="text-brandDark font-medium font-december">Proyecto</span>
                 </div>
@@ -474,7 +474,7 @@
                 detailContainer.innerHTML = `
                     <div class="text-center py-20">
                         <h2 class="text-2xl font-bold font-december text-brandDark">Proyecto no encontrado</h2>
-                        <a href="#" onclick="navigateTo('#proyectos')" class="mt-4 inline-block px-5 py-2.5 bg-peony hover:bg-peony-dark text-white rounded-xl font-semibold transition">Volver a Proyectos</a>
+                        <a href="#" onclick="navigateTo(event, '#proyectos')" class="mt-4 inline-block px-5 py-2.5 bg-peony hover:bg-peony-dark text-white rounded-xl font-semibold transition">Volver a Proyectos</a>
                     </div>
                 `;
                 return;
@@ -713,7 +713,8 @@
             }
         }
 
-        function navigateTo(hash) {
+        function navigateTo(event, hash) {
+            if (event) event.preventDefault();
             const isSameHash = window.location.hash === hash;
             window.location.hash = hash;
             closeMobileMenu();
