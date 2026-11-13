@@ -547,7 +547,34 @@
                         <p class="text-sm text-brandDark/80 dark:text-emerald-100/80">El iglú fue creado utilizando modificadores de array para generar los bloques de hielo, junto con texturizado PBR.</p>
                     </div>
                 `
-            }
+            },
+            'Gumball-Machine': {
+    title: 'Gumball Machine - Maquina de Chicles',
+    subtitle: 'Prop creado para probar nuevas tecnicas de shading y render en Eevee.',
+    category: 'Props',
+    bannerImage: 'Render_Final_Gachapon.png',
+    gallery: [
+        'Render_2_Gachapon.png',
+        'Render_3_Gachapon.png',
+        'Render_4_Gachapon.png',
+        'Render_5_Gachapon.png',
+        'Wire_Gachapon.png',
+    ],
+    engine: 'Blender',
+    duration: '3 Días',
+    summary: 'Maquina de Chicles, texturizada con un estilo de pinceladas, para crear un efecto diferente en el modelo. Ademas de probar nuevos renders en Eevee.',
+    overviewHtml: `
+        <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Tecnicas utilizadas</h3>
+        <div class="p-4 bg-sage/20 dark:bg-darkCard/80 rounded-xl border border-sage/60 dark:border-teal/20 mb-8">
+            <h4 class="font-semibold text-teal-dark dark:text-teal-light mb-1">Shading</h4>
+            <p class="text-sm text-brandDark/80 dark:text-emerald-100/80">Para el estilo de pinceladas que contiene la maquina se utilizaron diferentes mezclas de Color Ramp, Voroni Texture, Imagenes de textura de pinceladas. Ademas se utilizo el Normal de las textura de pinceladas para poder crear algo mucho mas llamativo y con textura.</p>
+        </div>
+         <div class="p-4 bg-sage/20 dark:bg-darkCard/80 rounded-xl border border-sage/60 dark:border-teal/20">
+                            <h4 class="font-semibold text-teal-dark dark:text-teal-light mb-1">Renderizado Wireframe</h4>
+                            <p class="text-sm text-brandDark/80 dark:text-emerald-100/80">Se investigo la manera de como crear un render Wireframe, se utilizo el apartado Override colocando el material creado temporalmente para hacer el Render. Ademas para el efecto de las lineas se utilizo 2 Freestyle Line Set para dejar un borde mas grueso y lograr un render más optimo.</p>
+                        </div>
+    `
+}
         };
 
         function renderProjectDetail(projectId) {
