@@ -60,7 +60,7 @@
                         },
                         sage: {
                             DEFAULT: '#B5BFA1',
-                            light: '#cb3ad',
+                            light: '#cbd3ad',
                             dark: '#939f7d'
                         },
                         teal: {
@@ -339,28 +339,28 @@
                     </div>
                     
                     <!-- Tarjeta Proyecto 5 -->
-<div class="project-card group bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-cotton/70 dark:border-teal/20 shadow-sm hover:shadow-xl hover:border-peony/50 dark:hover:border-peony/50 transition-all duration-300" data-category="modelado">
-    <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo(event, '#proyecto/Gumball-Machine')">
-        <img src="Render_Final_Gachapon.png" alt="Prop 3D Maquina de Chicles" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
-        <span class="absolute top-3 right-3 bg-peony text-white text-xs font-semibold px-2.5 py-1 rounded-md shadow">Props</span>
-    </div>
-    <div class="p-6">
-        <h3 class="text-xl font-bold font-december mb-2 text-brandDark dark:text-emerald-50 group-hover:text-peony transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Gumball-Machine')">
-            Gumball Machine - Maquina de Chicles
-        </h3>
-        <p class="text-brandDark/70 dark:text-emerald-100/70 text-sm mb-4 line-clamp-2">
-            Prop creado para probar nuevas tecnicas de shaders.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-5">
-            <span class="text-xs bg-cotton/30 dark:bg-teal/10 border border-cotton/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">Blender</span>
-            <span class="text-xs bg-cotton/30 dark:bg-teal/10 border border-cotton/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">Props</span>
-        </div>
-        <a href="#proyecto/Gumball-Machine" onclick="navigateTo(event, '#proyecto/Gumball-Machine')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-peony to-carnation hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
-            <span>Ver Proyecto</span>
-            <i class="fas fa-arrow-right text-xs"></i>
-        </a>
-    </div>
-</div>
+                    <div class="project-card group bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-cotton/70 dark:border-teal/20 shadow-sm hover:shadow-xl hover:border-peony/50 dark:hover:border-peony/50 transition-all duration-300" data-category="modelado">
+                        <div class="relative overflow-hidden h-52 bg-brandDark cursor-pointer" onclick="navigateTo(event, '#proyecto/Gumball-Machine')">
+                            <img src="Render_Final_Gachapon.png" alt="Prop 3D Maquina de Chicles" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
+                            <span class="absolute top-3 right-3 bg-peony text-white text-xs font-semibold px-2.5 py-1 rounded-md shadow">Props</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold font-december mb-2 text-brandDark dark:text-emerald-50 group-hover:text-peony transition cursor-pointer" onclick="navigateTo(event, '#proyecto/Gumball-Machine')">
+                                Gumball Machine - Maquina de Chicles
+                            </h3>
+                            <p class="text-brandDark/70 dark:text-emerald-100/70 text-sm mb-4 line-clamp-2">
+                                Prop creado para probar nuevas tecnicas de shaders.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="text-xs bg-cotton/30 dark:bg-teal/10 border border-cotton/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">Blender</span>
+                                <span class="text-xs bg-cotton/30 dark:bg-teal/10 border border-cotton/60 dark:border-teal/30 px-2.5 py-1 rounded-md text-brandDark dark:text-emerald-200">Props</span>
+                            </div>
+                            <a href="#proyecto/Gumball-Machine" onclick="navigateTo(event, '#proyecto/Gumball-Machine')" class="inline-flex items-center justify-center w-full py-2.5 bg-gradient-to-r from-peony to-carnation hover:opacity-90 text-white rounded-xl text-sm font-semibold transition shadow-md gap-2">
+                                <span>Ver Proyecto</span>
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -448,6 +448,16 @@
         // Ejecutar tema inicial antes de renderizar
         initTheme();
 
+        /*
+         * CAMPOS OPCIONALES POR PROYECTO
+         * ------------------------------
+         * video:      'archivo.mp4'            → sección "Video del Proyecto"
+         * videoEmbed: 'https://youtube.com/embed/ID' → alternativa al video local
+         * technical:  [ { title, description, image?, video? }, ... ]
+         *             → sección "Detalles Técnicos" (geometry nodes, wireframe, shaders, UVs, etc.)
+         *             Si una tarjeta no tiene image ni video, se muestra solo con texto.
+         *             Para agregar una foto, descomenta/agrega la línea image: 'archivo.png'
+         */
         const projectsData = {
             'Bola-de-cristal-navidad': {
                 title: 'Bola de cristal navidad',
@@ -462,6 +472,24 @@
                 duration: '1 mes',
                 sketchfabUrl: 'https://sketchfab.com/3d-models/bola-de-cristal-de-navidad-bda62853946d4e7a91c35b2884b9b056',
                 instagramUrl: 'https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0',
+                // video: 'Video_Bola.mp4',
+                technical: [
+                    {
+                        title: 'Geometry Nodes',
+                        description: 'Los regalos y adornos se generan con Geometry Nodes en lugar de ser modelos separados, lo que optimiza la escena.',
+                        // image: 'GeoNodes_Bola.png'
+                    },
+                    {
+                        title: 'Bake de texturas',
+                        description: 'El diorama se dividió en grupos de objetos pequeños, medianos, grandes y complejos para el bake.',
+                        // image: 'Bake_Bola.png'
+                    },
+                    {
+                        title: 'UV Layout',
+                        description: 'Distribución de UVs de los grupos de objetos.',
+                        // image: 'UV_Bola.png'
+                    }
+                ],
                 summary: 'Se nos pidió crear un diorama de una habitación, pero el semestre cerraría justo cerca de la época navideña, con el permiso del profesor decidí inspirarme en la época y crear esta bola de cristal navideña.',
                 overviewHtml: `
                     <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Desafíos Técnicos y Soluciones</h3>
@@ -490,6 +518,24 @@
                 duration: '2 Semanas',
                 sketchfabUrl: 'https://sketchfab.com/3d-models/mesas-de-mimbre-8c44da59cbaa47ee988273a87ad7cf09',
                 instagramUrl: 'https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0',
+                // video: 'Video_Mimbre.mp4',
+                technical: [
+                    {
+                        title: 'Referencia vs modelo',
+                        description: 'Comparación entre la referencia real elegida y el modelo final.',
+                        // image: 'Referencia_Mimbre.png'
+                    },
+                    {
+                        title: 'Wireframe / Topología',
+                        description: 'Topología del modelo, incluyendo la curvatura de cada pieza.',
+                        // image: 'Wire_Mimbre.png'
+                    },
+                    {
+                        title: 'Material PBR de mimbre',
+                        description: 'Configuración de las texturas PBR utilizadas para crear el mimbre.',
+                        // image: 'Shader_Mimbre.png'
+                    }
+                ],
                 summary: 'Juego de mesa creado en base a una referencia real, con textura PBR',
                 overviewHtml: `
                     <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Etapas del Desarrollo</h3>
@@ -512,6 +558,24 @@
                 duration: '1 Semanas',
                 sketchfabUrl: 'https://sketchfab.com/3d-models/avion-peak-24a584e555ac4e9a8e85a195affc6ced',
                 instagramUrl: 'https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0',
+                // video: 'Video_Avion.mp4',
+                technical: [
+                    {
+                        title: 'Niveles de detalle (LOD)',
+                        description: 'Versiones del modelo con distinta cantidad de polígonos para implementar LOD en Unity.',
+                        // image: 'LOD_Avion.png'
+                    },
+                    {
+                        title: 'Wireframe / Topología',
+                        description: 'Topología del modelo.',
+                        // image: 'Wire_Avion.png'
+                    },
+                    {
+                        title: 'Sticker y Stencil',
+                        description: 'El logo se creó con un sticker de Blender y las letras con un stencil.',
+                        // image: 'Sticker_Avion.png'
+                    }
+                ],
                 summary: 'Prop creado para un escenario inspirado en Peak para poder implementar LOD, Occlusion Culling y bake de luces.',
                 overviewHtml: `
                     <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Características Destacadas</h3>
@@ -539,6 +603,24 @@
                 duration: '1 Día',
                 sketchfabUrl: 'https://sketchfab.com/3d-models/iglu-72ac33f737fd4fa5b97c8284eb6f4b54',
                 instagramUrl: 'https://www.instagram.com/art.mathov?stkn=dDg5MTVxZHB6Z2Z0',
+                // video: 'Video_Iglu.mp4',
+                technical: [
+                    {
+                        title: 'Modificador Array',
+                        description: 'Los bloques de hielo se generan con modificadores de array.',
+                        // image: 'Array_Iglu.png'
+                    },
+                    {
+                        title: 'Wireframe / Topología',
+                        description: 'Topología del iglú.',
+                        // image: 'Wire_Iglu.png'
+                    },
+                    {
+                        title: 'Material PBR de hielo',
+                        description: 'Texturizado PBR aplicado a los bloques.',
+                        // image: 'Shader_Iglu.png'
+                    }
+                ],
                 summary: 'Prop creado para una animación de pingüinos.',
                 overviewHtml: `
                     <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Características Destacadas</h3>
@@ -549,33 +631,44 @@
                 `
             },
             'Gumball-Machine': {
-    title: 'Gumball Machine - Maquina de Chicles',
-    subtitle: 'Prop creado para probar nuevas tecnicas de shading y render en Eevee.',
-    category: 'Props',
-    bannerImage: 'Render_Final_Gachapon.png',
-    gallery: [
-        'Render_2_Gachapon.png',
-        'Render_3_Gachapon.png',
-        'Render_4_Gachapon.png',
-        'Render_5_Gachapon.png',
-        'Wire_Gachapon.png',
-    ],
-    engine: 'Blender',
-    duration: '3 Días',
-    video: 'Video_Gachapon.mp4',
-    summary: 'Maquina de Chicles, texturizada con un estilo de pinceladas, para crear un efecto diferente en el modelo. Ademas de probar nuevos renders en Eevee.',
-    overviewHtml: `
-        <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Tecnicas utilizadas</h3>
-        <div class="p-4 bg-sage/20 dark:bg-darkCard/80 rounded-xl border border-sage/60 dark:border-teal/20 mb-8">
-            <h4 class="font-semibold text-teal-dark dark:text-teal-light mb-1">Shading</h4>
-            <p class="text-sm text-brandDark/80 dark:text-emerald-100/80">Para el estilo de pinceladas que contiene la maquina se utilizaron diferentes mezclas de Color Ramp, Voroni Texture, Imagenes de textura de pinceladas. Ademas se utilizo el Normal de las textura de pinceladas para poder crear algo mucho mas llamativo y con textura.</p>
-        </div>
-         <div class="p-4 bg-sage/20 dark:bg-darkCard/80 rounded-xl border border-sage/60 dark:border-teal/20">
-                            <h4 class="font-semibold text-teal-dark dark:text-teal-light mb-1">Renderizado Wireframe</h4>
-                            <p class="text-sm text-brandDark/80 dark:text-emerald-100/80">Se investigo la manera de como crear un render Wireframe, se utilizo el apartado Override colocando el material creado temporalmente para hacer el Render. Ademas para el efecto de las lineas se utilizo 2 Freestyle Line Set para dejar un borde mas grueso y lograr un render más optimo.</p>
-                        </div>
-    `
-}
+                title: 'Gumball Machine - Maquina de Chicles',
+                subtitle: 'Prop creado para probar nuevas tecnicas de shading y render en Eevee.',
+                category: 'Props',
+                bannerImage: 'Render_Final_Gachapon.png',
+                gallery: [
+                    'Render_2_Gachapon.png',
+                    'Render_3_Gachapon.png',
+                    'Render_4_Gachapon.png',
+                    'Render_5_Gachapon.png',
+                ],
+                engine: 'Blender',
+                duration: '3 Días',
+                video: 'Video_Gachapon.mp4',
+                technical: [
+                    {
+                        title: 'Render Wireframe',
+                        description: 'Render con Override de material y 2 Freestyle Line Sets para lograr un borde más grueso.',
+                        image: 'Wire_Gachapon.png'
+                    },
+                    {
+                        title: 'Shader de pinceladas',
+                        description: 'Mezcla de Color Ramp, Voronoi Texture y texturas de pinceladas, usando también su Normal.',
+                        // image: 'Shader_Gachapon.png'
+                    }
+                ],
+                summary: 'Maquina de Chicles, texturizada con un estilo de pinceladas, para crear un efecto diferente en el modelo. Ademas de probar nuevos renders en Eevee.',
+                overviewHtml: `
+                    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Tecnicas utilizadas</h3>
+                    <div class="p-4 bg-sage/20 dark:bg-darkCard/80 rounded-xl border border-sage/60 dark:border-teal/20 mb-8">
+                        <h4 class="font-semibold text-teal-dark dark:text-teal-light mb-1">Shading</h4>
+                        <p class="text-sm text-brandDark/80 dark:text-emerald-100/80">Para el estilo de pinceladas que contiene la maquina se utilizaron diferentes mezclas de Color Ramp, Voroni Texture, Imagenes de textura de pinceladas. Ademas se utilizo el Normal de las textura de pinceladas para poder crear algo mucho mas llamativo y con textura.</p>
+                    </div>
+                    <div class="p-4 bg-sage/20 dark:bg-darkCard/80 rounded-xl border border-sage/60 dark:border-teal/20">
+                        <h4 class="font-semibold text-teal-dark dark:text-teal-light mb-1">Renderizado Wireframe</h4>
+                        <p class="text-sm text-brandDark/80 dark:text-emerald-100/80">Se investigo la manera de como crear un render Wireframe, se utilizo el apartado Override colocando el material creado temporalmente para hacer el Render. Ademas para el efecto de las lineas se utilizo 2 Freestyle Line Set para dejar un borde mas grueso y lograr un render más optimo.</p>
+                    </div>
+                `
+            }
         };
 
         function renderProjectDetail(projectId) {
@@ -675,24 +768,55 @@
                             ${project.overviewHtml}
                         </div>
 
-${project.video || project.videoEmbed ? `
-<div>
-    <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Video del Proyecto</h3>
-    <div class="rounded-2xl overflow-hidden border border-cotton dark:border-teal/20 shadow-sm bg-brandDark">
-        ${project.video ? `
-            <video controls preload="metadata" poster="${project.bannerImage}" class="w-full max-h-[70vh]">
-                <source src="${project.video}" type="video/mp4">
-                Tu navegador no soporta video HTML5.
-            </video>
-        ` : `
-            <div class="aspect-video">
-                <iframe src="${project.videoEmbed}" class="w-full h-full" title="Video de ${project.title}"
-                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        `}
-    </div>
-</div>
-` : ''}
+                        <!-- Detalles Técnicos (geometry nodes, wireframe, shaders, UVs, etc.) -->
+                        ${project.technical && project.technical.length ? `
+                        <div>
+                            <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Detalles Técnicos</h3>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                ${project.technical.map(item => `
+                                    <div class="bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-cotton dark:border-teal/20 shadow-sm">
+                                        ${item.image ? `
+                                            <div class="h-48 bg-brandDark cursor-pointer group relative overflow-hidden" onclick="openLightbox('${item.image}')">
+                                                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                                <div class="absolute inset-0 bg-brandDark/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                                    <i class="fas fa-search-plus text-white text-lg"></i>
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                        ${item.video ? `
+                                            <video controls preload="metadata" class="w-full h-48 bg-brandDark object-cover">
+                                                <source src="${item.video}" type="video/mp4">
+                                            </video>
+                                        ` : ''}
+                                        <div class="p-4">
+                                            <h4 class="font-semibold text-teal-dark dark:text-teal-light mb-1">${item.title}</h4>
+                                            <p class="text-sm text-brandDark/80 dark:text-emerald-100/80">${item.description}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        ` : ''}
+
+                        <!-- Video del Proyecto -->
+                        ${project.video || project.videoEmbed ? `
+                        <div>
+                            <h3 class="text-2xl font-bold font-december mb-4 text-brandDark dark:text-emerald-50">Video del Proyecto</h3>
+                            <div class="rounded-2xl overflow-hidden border border-cotton dark:border-teal/20 shadow-sm bg-brandDark">
+                                ${project.video ? `
+                                    <video controls preload="metadata" poster="${project.bannerImage}" class="w-full max-h-[70vh]">
+                                        <source src="${project.video}" type="video/mp4">
+                                        Tu navegador no soporta video HTML5.
+                                    </video>
+                                ` : `
+                                    <div class="aspect-video">
+                                        <iframe src="${project.videoEmbed}" class="w-full h-full" title="Video de ${project.title}"
+                                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                `}
+                            </div>
+                        </div>
+                        ` : ''}
 
                         <!-- Galería de Renders y Capturas del Proyecto Ampliables -->
                         <div>
